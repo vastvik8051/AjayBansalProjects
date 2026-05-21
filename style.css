@@ -884,6 +884,13 @@ nav a:hover::after{
     height:400px;
 }
 
+.text-card{
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+    padding-top: 50px;
+}
+
 /* OVERLAY */
 
 .project-overlay{
@@ -1030,9 +1037,7 @@ nav a:hover::after{
     margin-bottom:60px;
 }
 
-/* =========================================
-   FOOTER
-========================================= */
+
 
 
 /* =========================================
