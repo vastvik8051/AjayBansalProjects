@@ -11,6 +11,12 @@ window.addEventListener("scroll", function () {
     }
 });
 
+
+
+
+
+
+
 // scrollLine
 window.addEventListener('scroll', () => {
   const progressBar = document.querySelector('.scroll-progress');
@@ -29,8 +35,13 @@ window.addEventListener('scroll', () => {
 });
 
 
+
+
+
+
+
+
 // stats 
-// Function to handle the counting animation
 const startCounting = (counterElement) => {
     const target = +counterElement.getAttribute('data-target');
     const duration = 2000; // Animation duration in milliseconds (2 seconds)
@@ -57,7 +68,7 @@ const startCounting = (counterElement) => {
     requestAnimationFrame(updateNumber);
 };
 
-// Create an Intersection Observer to trigger when section is in view
+//  Create an Intersection Observer to trigger when section is in view
 const statsSection = document.querySelector('.stats-section');
 const counters = document.querySelectorAll('.counter');
 
