@@ -474,7 +474,7 @@ nav a:hover::after {
 
     color: #fff;
 
-    padding: 70px 40px;
+    padding: 40px 40px;
 
     display: grid;
 
@@ -543,9 +543,9 @@ nav a:hover::after {
 
 .stat-box-fixed1 h3 {
 
-    font-size: clamp(42px, 6vw, 40px);
+    font-size: clamp(50px, 6vw, 40px);
 
-    color: #D7B17D;
+    color: #b48f5b;
 
     margin-bottom: 15px;
 
@@ -556,22 +556,8 @@ nav a:hover::after {
 
 }
 
-.stat-box-fixed1 h2 {
-    color: var(--dark-color);
-}
-
-.stat-box-fixed1 ul li {
-
-    color: #D7B17D;
-
-    font-size: 20px;
-
-    font-weight: 600;
-
-    letter-spacing: 2px;
 
 
-}
 
 /* =========================================
    ABOUT
@@ -579,7 +565,7 @@ nav a:hover::after {
 
 .about-section {
 
-    padding: 140px 80px;
+    padding: 40px 80px;
 
     display: grid;
 
@@ -671,7 +657,7 @@ nav a:hover::after {
 
 .services-section {
 
-    padding: 140px 80px;
+    padding: 40px 80px;
 
     background: #0D0D0D;
 
@@ -948,11 +934,15 @@ nav a:hover::after {
 ========================================= */
 
 .projects-section {
-    padding: 140px 80px;
+    padding: 40px 80px;
+}
+
+.section-tag{
+    font-size: 30px;
 }
 
 .section-heading {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .section-heading h2 {
@@ -1151,7 +1141,7 @@ nav a:hover::after {
 
 .instagram-section {
 
-    padding: 140px 80px;
+    padding: 40px 80px;
 
     background: #F5F1EA;
 }
