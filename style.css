@@ -133,6 +133,29 @@ img {
     transform:scale(1.08);
 }
 
+/* The global trigger class */
+.hover-underline {
+    position: relative; /* Essential: keeps the absolute line locked to this text */
+    display: inline-block; /* Keeps the line the same width as the text, not the whole screen */
+}
+
+/* The actual line (initially hidden) */
+.hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 4px;
+    background: var(--primary-color);
+    transition: width 0.4s ease; /* Explicitly targeting width is slightly better for performance */
+}
+
+/* The hover effect */
+.hover-underline:hover::after {
+    width: 100%;
+}
+
 
 
 
