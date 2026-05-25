@@ -3,185 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portfolio</title>
+    <title>Portfolio — Ajay Builders & Consultant</title>
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./portfolio.css">
 </head>
 <body>
 
-    <header class="navbar">
 
-        <div class="logo">
+<!-- =========================================
+     LOADING SCREEN
+     — Shows on every page load
+     — Logo fades in, gold line expands, then screen fades out
+     — To DISABLE: delete this block and remove the loader JS section
+========================================= -->
 
-            <a href="./index.html">
-                <img src="./assets/img/ajaylogo.webp" alt="">
-            </a>
+<div class="loader" id="loader">
+    <div class="loader-content">
+        <img src="./assets/img/ajaylogo.webp" alt="Ajay Builders" class="loader-logo">
+        <div class="loader-line"></div>
+        <p class="loader-text">Ajay Builders & Consultant</p>
+    </div>
+</div>
 
 
+<!-- =========================================
+     NAVBAR
+========================================= -->
 
-            <div class="logo-text">
-                <h1>Ajay Builders & Consultant</h1>
-                <p>Architecture · Engineering · Interiors</p>
-            </div>
+<header class="navbar" id="navbar">
 
+    <div class="logo">
+        <a href="./index.html">
+            <img src="./assets/img/ajaylogo.webp" alt="">
+        </a>
+        <div class="logo-text">
+            <h1>Ajay Builders & Consultant</h1>
+            <p>Architecture · Engineering · Interiors</p>
         </div>
-
-        <nav>
-
-            <a href="./index.html">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./portfolio.html">Portfolio</a>
-            <a href="./services.html">Services</a>
-            <a href="./contact.html">Contact</a>
-
-        </nav>
-
-        <div class="nav-buttons">
-
-            <!-- <button class="glass-btn">
-                Menu
-            </button> -->
-
-            <button class="solid-btn">
-                Contacts
-            </button>
-
-        </div>
-
-    </header>
-
-    <!-- section--------------------- -->
-    <section class="portfolio-section">
-
-    <div class="portfolio-heading">
-
-        <p class="section-tag">
-            FEATURED PROJECTS
-        </p>
-
-        <h2>
-
-            Architecture Designed
-            For Timeless Luxury.
-
-        </h2>
-
     </div>
 
+    <nav>
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./portfolio.html">Portfolio</a>
+        <a href="./services.html">Services</a>
+        <a href="./contact.html">Contact</a>
+    </nav>
 
+    <div class="nav-buttons">
+        <button class="solid-btn">Contacts</button>
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     PORTFOLIO HERO
+     — Full screen cinematic banner
+     — Image slowly zooms on hover
+========================================= -->
+
+<section class="portfolio-hero">
+
+    <img src="./assets/img/1.webp" alt="Hero">
+    <div class="portfolio-hero-overlay"></div>
+
+    <div class="portfolio-hero-content reveal">
+        <p class="section-tag">FEATURED PROJECTS</p>
+        <h1>
+            Architecture Crafted
+            For Timeless Luxury.
+        </h1>
+        <p class="portfolio-hero-text">
+            A curated showcase of luxury residences,
+            commercial developments,
+            and modern interiors designed with timeless elegance.
+        </p>
+    </div>
+
+    <!-- FLOATING STATS — duplicate .hero-stat to add more -->
+    <div class="portfolio-hero-stats">
+        <div class="hero-stat reveal">
+            <h3>40+</h3>
+            <p>YEARS EXPERIENCE</p>
+        </div>
+        <div class="hero-stat reveal">
+            <h3>500+</h3>
+            <p>PROJECTS COMPLETED</p>
+        </div>
+        <div class="hero-stat reveal">
+            <h3>PAN INDIA</h3>
+            <p>DESIGN PRESENCE</p>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     INTRO TEXT
+========================================= -->
+
+<section class="portfolio-editorial-intro reveal-zoom">
+    <p class="section-tag">OUR PORTFOLIO</p>
+    <h2>
+        Every project reflects
+        precision,
+        luxury,
+        and timeless architectural identity.
+    </h2>
+</section>
+
+
+<!-- =========================================
+     MAIN GRID — MASONRY / EDITORIAL LAYOUT
+     — Intentionally uneven: tall left, mixed right
+     — Cards have cinematic hover: zoom + gradient deepens + text rises
+     — Click any card image to open fullscreen preview modal
+     — To add a project: duplicate a .portfolio-card block,
+       update img src, data-category, data-title, and text inside
+========================================= -->
+
+<section class="portfolio-section">
     <div class="portfolio-grid">
 
-        <!-- LEFT LARGE -->
-
-        <div class="portfolio-card tall-card">
-
-            <img src="./assets/img/1.webp" alt="">
-
+        <!-- LEFT — tall feature card -->
+        <div class="portfolio-card tall-card reveal-left"
+             data-category="RESIDENTIAL • GWALIOR"
+             data-title="Luxury Villa">
+            <img src="./assets/img/2.webp" alt="Luxury Villa">
             <div class="portfolio-overlay"></div>
-
             <div class="portfolio-content">
-
-                <p>
-                    RESIDENTIAL
-                </p>
-
-                <h3>
-                    Luxury Villa
-                </h3>
-
+                <p>RESIDENTIAL • GWALIOR</p>
+                <h3>Luxury Villa</h3>
             </div>
-
+            <!-- Gold line animates upward on hover -->
+            <div class="card-gold-line"></div>
         </div>
 
-
-        <!-- RIGHT SIDE -->
-
+        <!-- RIGHT COLUMN — mixed sizes for editorial rhythm -->
         <div class="portfolio-right">
 
             <div class="portfolio-row">
 
-                <div class="portfolio-card small-card">
-
-                    <img src="./assets/img/2.webp" alt="">
-
+                <div class="portfolio-card small-card reveal-zoom"
+                     data-category="COMMERCIAL"
+                     data-title="Office Space">
+                    <img src="./assets/img/3.webp" alt="Office Space">
                     <div class="portfolio-overlay"></div>
-
                     <div class="portfolio-content">
-
-                        <p>
-                            COMMERCIAL
-                        </p>
-
-                        <h3>
-                            Office Space
-                        </h3>
-
+                        <p>COMMERCIAL</p>
+                        <h3>Office Space</h3>
                     </div>
-
+                    <div class="card-gold-line"></div>
                 </div>
 
-                <div class="portfolio-card small-card">
-
-                    <img src="./assets/img/3.webp" alt="">
-
+                <div class="portfolio-card small-card reveal-zoom"
+                     data-category="INTERIORS"
+                     data-title="Modern Interiors">
+                    <img src="./assets/img/4.webp" alt="Modern Interiors">
                     <div class="portfolio-overlay"></div>
-
                     <div class="portfolio-content">
-
-                        <p>
-                            INTERIORS
-                        </p>
-
-                        <h3>
-                            Modern Interiors
-                        </h3>
-
+                        <p>INTERIORS</p>
+                        <h3>Modern Interiors</h3>
                     </div>
-
+                    <div class="card-gold-line"></div>
                 </div>
 
             </div>
 
-
-            <div class="portfolio-card wide-card">
-
-                <img src="./assets/img/4.webp" alt="">
-
+            <div class="portfolio-card wide-card reveal-right"
+                 data-category="CONTEMPORARY DESIGN"
+                 data-title="Elevated Urban Living">
+                <img src="./assets/img/5.webp" alt="Elevated Urban Living">
                 <div class="portfolio-overlay"></div>
-
                 <div class="portfolio-content">
-
-                    <p>
-                        RESIDENTIAL
-                    </p>
-
-                    <h3>
-                        Contemporary Residence
-                    </h3>
-
+                    <p>CONTEMPORARY DESIGN</p>
+                    <h3>Elevated Urban Living</h3>
                 </div>
-
+                <div class="card-gold-line"></div>
             </div>
 
-
-            <div class="portfolio-info">
-
-                <p class="section-tag">
-                    OUR WORK
-                </p>
-
+            <!-- Text-only philosophy card — no image -->
+            <div class="portfolio-info reveal-right">
+                <p class="section-tag">DESIGN PHILOSOPHY</p>
                 <h3>
-
-                    Every project reflects
-                    timeless elegance,
-                    precision,
-                    and modern architecture.
-
+                    Architecture should
+                    inspire emotion,
+                    elevate living,
+                    and remain timeless.
                 </h3>
-
             </div>
 
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================
+     FULL WIDTH SHOWCASE BANNER
+     — Parallax effect: image moves slower than scroll
+     — Also has slow cinematic zoom on hover
+     — To change image: update img src below
+========================================= -->
+
+<section class="portfolio-banner reveal-zoom">
+    <img src="./assets/img/6.webp" alt="Bespoke Architecture" class="parallax-img">
+    <div class="portfolio-banner-overlay"></div>
+    <div class="portfolio-banner-content">
+        <p>BESPOKE ARCHITECTURE</p>
+        <h2>
+            Spaces designed
+            to feel cinematic,
+            refined,
+            and unforgettable.
+        </h2>
+    </div>
+</section>
+
+
+<!-- =========================================
+     DARK EDITORIAL SECTION
+     — Your original dark section, kept exactly as-is
+========================================= -->
+
+<section class="portfolio-dark-section">
+
+    <div class="portfolio-dark-left reveal-left">
+        <p class="section-tag">OUR APPROACH</p>
+        <h2>
+            We create spaces
+            that balance luxury,
+            functionality,
+            and architectural clarity.
+        </h2>
+    </div>
+
+    <div class="portfolio-dark-right reveal-right">
+        <p>
+            Every residence, commercial development,
+            and interior project is carefully designed
+            with timeless materials, spatial intelligence,
+            and modern elegance.
+        </p>
+        <p>
+            Our multidisciplinary approach combines
+            architecture, engineering, and interior expertise
+            into one seamless design experience.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     STICKY EDITORIAL SECTION (NEW)
+     — Left text stays fixed while right images scroll
+     — To change heading/body: edit .sticky-left content below
+     — To add more images: duplicate a .sticky-image div
+     — To remove this section: delete this entire block
+========================================= -->
+
+<section class="sticky-editorial">
+
+    <!-- This panel sticks in place while you scroll -->
+    <div class="sticky-left reveal-left">
+        <p class="section-tag">THE PROCESS</p>
+        <h2>
+            From concept
+            to completion,
+            every detail
+            is considered.
+        </h2>
+        <p>
+            We work closely with each client
+            to translate vision into architecture —
+            spaces that are as functional
+            as they are beautiful.
+        </p>
+    </div>
+
+    <!-- These images scroll normally past the fixed left panel -->
+    <div class="sticky-right">
+
+        <div class="sticky-image reveal-zoom">
+            <img src="./assets/img/3.webp" alt="">
+        </div>
+
+        <div class="sticky-image reveal-zoom">
+            <img src="./assets/img/4.webp" alt="">
+        </div>
+
+        <div class="sticky-image reveal-zoom">
+            <img src="./assets/img/5.webp" alt="">
         </div>
 
     </div>
@@ -189,162 +305,247 @@
 </section>
 
 
+<!-- =========================================
+     HORIZONTAL SCROLL SHOWCASE
+     — Cards scroll LEFT as user scrolls DOWN the page
+     — To add more cards: duplicate a .h-card block
+     — To adjust scroll speed/distance: find adjustHorizontalScroll() in JS
+     — Cards also open the fullscreen modal on click
+========================================= -->
 
+<section class="horizontal-section" id="horizontalSection">
 
-    <!-- section--------------- -->
+    <div class="horizontal-header reveal">
+        <p class="section-tag">ALL PROJECTS</p>
+        <h2>Explore The Full Collection.</h2>
+        <p class="horizontal-hint">Scroll to explore →</p>
+    </div>
 
-    <footer class="footer">
+    <div class="horizontal-track-wrapper">
+        <div class="horizontal-track" id="horizontalTrack">
 
-        <div class="footer-top">
+            <!-- Duplicate this block to add a project card -->
 
-            <div class="footer-brand">
-
-                <div class="footer-tag">
-
-                    <img src="./assets/img/ajaylogo.webp" alt="">
-
-                    <div class="footer-text">
-
-                        <p>
-                            Ajay Builders & Consultant
-                        </p>
-
-                        <p>
-                            Architecture · Engineering · Interiors
-                        </p>
-
-                    </div>
-
+            <div class="h-card"
+                 data-category="RESIDENTIAL • GWALIOR"
+                 data-title="Luxury Villa">
+                <img src="./assets/img/2.webp" alt="">
+                <div class="h-card-overlay"></div>
+                <div class="h-card-content">
+                    <p>RESIDENTIAL</p>
+                    <h3>Luxury Villa</h3>
                 </div>
-
-
-                <h2>
-                    Building Timeless
-                    Luxury Spaces.
-                </h2>
-
+                <div class="card-gold-line"></div>
             </div>
 
-            <a href="#" class="footer-cta">
-                Start a Project →
-            </a>
-
-        </div>
-
-        <div class="footer-line"></div>
-
-        <div class="footer-middle">
-
-            <div class="footer-about">
-
-                <p>
-
-                    Established in 1984, Ajay Builders & Consultant is a multi-disciplinary firm delivering excellence
-                    in Architecture, Engineering, Interior Design, Development, and Valuation across India.
-
-                </p>
-
+            <div class="h-card"
+                 data-category="COMMERCIAL"
+                 data-title="Office Space">
+                <img src="./assets/img/3.webp" alt="">
+                <div class="h-card-overlay"></div>
+                <div class="h-card-content">
+                    <p>COMMERCIAL</p>
+                    <h3>Office Space</h3>
+                </div>
+                <div class="card-gold-line"></div>
             </div>
 
-            <div class="footer-links">
-
-                <div class="footer-column">
-
-                    <h4>
-                        Navigation
-                    </h4>
-
-                    <a href="./index.html">
-                        Home
-                    </a>
-
-                    <a href="./about.html">
-                        About Us
-                    </a>
-
-                    <a href="./portfolio.html">
-                        Projects
-                    </a>
-
-                    <a href="./services.html">
-                        Services
-                    </a>
-
-                    <a href="./contact.html">
-                        Contact
-                    </a>
-
+            <div class="h-card"
+                 data-category="INTERIORS"
+                 data-title="Modern Interiors">
+                <img src="./assets/img/4.webp" alt="">
+                <div class="h-card-overlay"></div>
+                <div class="h-card-content">
+                    <p>INTERIORS</p>
+                    <h3>Modern Interiors</h3>
                 </div>
+                <div class="card-gold-line"></div>
+            </div>
 
-                <div class="footer-column">
-
-                    <h4>
-                        Contact Us
-                    </h4>
-
-                    <p>
-                        S 34 & 35 Sanjay Complex, Jayendraganj,
-                        Gwalior (MP) - 474009
-                    </p>
-
-                    <a href="tel:55454">
-                        5455252
-                    </a>
-
-                    <a href="">
-                        www.ajaybansalgroup.com
-                    </a>
-
-                    <a href="mailto:ar.ajaybansal@gmail.com">
-                        ar.ajaybansal@gmail.com
-                    </a>
-
-                    <a href="mailto:nikunjbansal@nivaventure.com">
-                        nikunjbansal@nivaventure.com
-                    </a>
-
-
-
+            <div class="h-card"
+                 data-category="CONTEMPORARY DESIGN"
+                 data-title="Elevated Urban Living">
+                <img src="./assets/img/5.webp" alt="">
+                <div class="h-card-overlay"></div>
+                <div class="h-card-content">
+                    <p>CONTEMPORARY</p>
+                    <h3>Elevated Urban Living</h3>
                 </div>
+                <div class="card-gold-line"></div>
+            </div>
 
-                <div class="footer-column">
-
-                    <h4>
-                        Socials
-                    </h4>
-
-                    <a href="https://www.instagram.com/ajaybuilders?igsh=cTM1N2tieWR1eTZq">
-                        Instagram
-                    </a>
-
-                    <a href="https://www.facebook.com/share/18SXtJwdca/">
-                        Facebook
-                    </a>
-
-                    <a href="https://www.linkedin.com/company/ajay-bansal-group/">
-                        LinkedIn
-                    </a>
-
+            <div class="h-card"
+                 data-category="LUXURY RESIDENCE"
+                 data-title="Elegant Family Home">
+                <img src="./assets/img/7.webp" alt="">
+                <div class="h-card-overlay"></div>
+                <div class="h-card-content">
+                    <p>LUXURY RESIDENCE</p>
+                    <h3>Elegant Family Home</h3>
                 </div>
+                <div class="card-gold-line"></div>
+            </div>
 
+            <div class="h-card"
+                 data-category="INTERIOR DESIGN"
+                 data-title="Timeless Living Spaces">
+                <img src="./assets/img/8.webp" alt="">
+                <div class="h-card-overlay"></div>
+                <div class="h-card-content">
+                    <p>INTERIOR DESIGN</p>
+                    <h3>Timeless Living Spaces</h3>
+                </div>
+                <div class="card-gold-line"></div>
             </div>
 
         </div>
+    </div>
 
-        <div class="footer-line"></div>
+</section>
 
-        <div class="footer-bottom">
 
+<!-- =========================================
+     SECOND GRID
+========================================= -->
+
+<section class="portfolio-section second-grid">
+    <div class="portfolio-grid two-grid">
+
+        <div class="portfolio-card wide-card reveal-left"
+             data-category="LUXURY RESIDENCE"
+             data-title="Elegant Family Home">
+            <img src="./assets/img/7.webp" alt="">
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-content">
+                <p>LUXURY RESIDENCE</p>
+                <h3>Elegant Family Home</h3>
+            </div>
+            <div class="card-gold-line"></div>
+        </div>
+
+        <div class="portfolio-card wide-card reveal-right"
+             data-category="INTERIOR DESIGN"
+             data-title="Timeless Living Spaces">
+            <img src="./assets/img/8.webp" alt="">
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-content">
+                <p>INTERIOR DESIGN</p>
+                <h3>Timeless Living Spaces</h3>
+            </div>
+            <div class="card-gold-line"></div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================
+     CTA
+========================================= -->
+
+<section class="portfolio-cta reveal-zoom">
+    <p class="section-tag">START YOUR PROJECT</p>
+    <h2>
+        Let's Build Something
+        Timeless Together.
+    </h2>
+    <button class="solid-btn">Contact Us</button>
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="footer-tag">
+                <img src="./assets/img/ajaylogo.webp" alt="">
+                <div class="footer-text">
+                    <p>Ajay Builders & Consultant</p>
+                    <p>Architecture · Engineering · Interiors</p>
+                </div>
+            </div>
+            <h2>Building Timeless Luxury Spaces.</h2>
+        </div>
+        <a href="#" class="footer-cta">Start a Project →</a>
+    </div>
+
+    <div class="footer-line"></div>
+
+    <div class="footer-middle">
+
+        <div class="footer-about">
             <p>
-                © 2026 Ajay Builders & Consultant. All rights reserved.
+                Established in 1984, Ajay Builders & Consultant is a multi-disciplinary firm delivering excellence
+                in Architecture, Engineering, Interior Design, Development, and Valuation across India.
             </p>
+        </div>
 
-            <p>
-                Architects · Engineers · Valuers · Developers · Interior Decorators
-            </p>
+        <div class="footer-links">
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <a href="./index.html">Home</a>
+                <a href="./about.html">About Us</a>
+                <a href="./portfolio.html">Projects</a>
+                <a href="./services.html">Services</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p>S 34 & 35 Sanjay Complex, Jayendraganj, Gwalior (MP) - 474009</p>
+                <a href="tel:55454">5455252</a>
+                <a href="">www.ajaybansalgroup.com</a>
+                <a href="mailto:ar.ajaybansal@gmail.com">ar.ajaybansal@gmail.com</a>
+                <a href="mailto:nikunjbansal@nivaventure.com">nikunjbansal@nivaventure.com</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Socials</h4>
+                <a href="https://www.instagram.com/ajaybuilders?igsh=cTM1N2tieWR1eTZq">Instagram</a>
+                <a href="https://www.facebook.com/share/18SXtJwdca/">Facebook</a>
+                <a href="https://www.linkedin.com/company/ajay-bansal-group/">LinkedIn</a>
+            </div>
 
         </div>
 
-    </footer>
+    </div>
+
+    <div class="footer-line"></div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Ajay Builders & Consultant. All rights reserved.</p>
+        <p>Architects · Engineers · Valuers · Developers · Interior Decorators</p>
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     FULLSCREEN PROJECT PREVIEW MODAL
+     — Opens when any .portfolio-card or .h-card is clicked
+     — Shows the project image, category, and title
+     — Close: click the X button, click outside image, or press Escape
+     — DO NOT rename IDs here — JS depends on them
+========================================= -->
+
+<div class="project-modal" id="projectModal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-inner">
+        <img src="" alt="" class="modal-img" id="modalImg">
+        <div class="modal-info">
+            <p class="modal-category" id="modalCategory"></p>
+            <h2 class="modal-title" id="modalTitle"></h2>
+        </div>
+    </div>
+</div>
+
+
+<script src="./portfolio.js"></script>
+
 </body>
 </html>

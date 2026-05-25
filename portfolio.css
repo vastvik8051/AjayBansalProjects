@@ -1,219 +1,1124 @@
-.portfolio-section{
+/* =========================================
+   PORTFOLIO.CSS — COMPLETE WITH ALL FEATURES
+   
+   SECTIONS IN THIS FILE:
+   1.  Loading Screen
+   2.  Portfolio Hero
+   3.  Intro Text
+   4.  Portfolio Cards (shared styles)
+   5.  Main Grid & Sizes
+   6.  Info Card
+   7.  Full Width Banner (with parallax)
+   8.  Dark Editorial Section
+   9.  Sticky Editorial Section
+   10. Horizontal Scroll Showcase
+   11. Second Grid
+   12. CTA
+   13. Project Modal
+   14. Reveal Animations
+   15. Grain Texture & Smooth Scroll
+   16. Responsive — 1100px
+   17. Responsive — 768px
+   18. Responsive — 480px
+========================================= */
 
-    padding:140px 80px;
 
-    background:#F5F1EA;
-}
+/* =========================================
+   FIX: style.css sets .section-tag to 30px
+   which is too large for portfolio tags.
+   This overrides it back for this page only.
+========================================= */
 
-.portfolio-heading{
-
-    margin-bottom:100px;
-}
-
-.portfolio-heading h2{
-
-    font-size:clamp(45px,6vw,85px);
-
-    line-height:1.05;
-
-    max-width:900px;
-
-    font-weight:400;
-}
-
-
-/* GRID */
-
-.portfolio-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:40px;
-
-    align-items:start;
-}
-
-.portfolio-right{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:40px;
-}
-
-.portfolio-row{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:40px;
+.portfolio-hero .section-tag,
+.portfolio-editorial-intro .section-tag,
+.portfolio-info .section-tag,
+.portfolio-banner-content .section-tag,
+.portfolio-dark-left .section-tag,
+.sticky-left .section-tag,
+.horizontal-header .section-tag,
+.portfolio-cta .section-tag,
+.modal-category {
+    font-size: 11px;
 }
 
 
-/* CARDS */
+/* =========================================
+   1. LOADING SCREEN
+   — To disable: delete this block + loader JS section
+   — To change duration: edit the setTimeout in JS (currently 2200ms)
+========================================= */
 
-.portfolio-card{
-
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:24px;
+.loader {
+    position: fixed;
+    inset: 0;
+    background: var(--dark-color);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.portfolio-card img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    transition:0.7s ease;
+.loader.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
-.portfolio-card:hover img{
-
-    transform:scale(1.05);
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
-.portfolio-overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,0.65),
-        rgba(0,0,0,0.15)
-    );
+.loader-logo {
+    width: 80px;
+    opacity: 0;
+    animation: loaderFadeIn 0.8s ease 0.3s forwards;
 }
 
-.portfolio-content{
-
-    position:absolute;
-
-    left:35px;
-    bottom:35px;
-
-    color:#fff;
-
-    z-index:2;
+.loader-line {
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    animation: loaderLine 1s ease 0.8s forwards;
 }
 
-.portfolio-content p{
-
-    letter-spacing:3px;
-
-    margin-bottom:12px;
-
-    font-size:12px;
+.loader-text {
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 4px;
+    font-size: 11px;
+    opacity: 0;
+    animation: loaderFadeIn 0.8s ease 1.4s forwards;
 }
 
-.portfolio-content h3{
+@keyframes loaderFadeIn {
+    to { opacity: 1; }
+}
 
-    font-size:34px;
-
-    font-weight:400;
+@keyframes loaderLine {
+    to { width: 200px; }
 }
 
 
-/* SIZES */
+/* =========================================
+   2. PORTFOLIO HERO
+   — Image zooms slowly on hover (cinematic)
+========================================= */
 
-.tall-card{
-
-    height:1100px;
+.portfolio-hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.small-card{
-
-    height:420px;
+.portfolio-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 8s ease;
 }
 
-.wide-card{
+.portfolio-hero:hover img {
+    transform: scale(1.02);
+}
 
-    height:520px;
+.portfolio-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.35));
+}
+
+.portfolio-hero-content {
+    position: absolute;
+    left: 80px;
+    bottom: 200px;
+    z-index: 2;
+    max-width: 950px;
+}
+
+.portfolio-hero-content h1 {
+    font-size: clamp(70px, 9vw, 140px);
+    line-height: 0.9;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.portfolio-hero-text {
+    font-size: 20px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.75);
+    max-width: 700px;
+}
+
+/* HERO STATS */
+
+.portfolio-hero-stats {
+    position: absolute;
+    right: 80px;
+    bottom: 80px;
+    z-index: 3;
+    display: flex;
+    gap: 25px;
+}
+
+.hero-stat {
+    padding: 30px;
+    min-width: 190px;
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+}
+
+.hero-stat h3 {
+    font-size: 34px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.hero-stat p {
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 2px;
+    font-size: 11px;
 }
 
 
-/* INFO CARD */
+/* =========================================
+   3. INTRO TEXT
+========================================= */
 
-.portfolio-info{
-
-    background:#111;
-
-    color:#fff;
-
-    padding:70px;
-
-    border-radius:24px;
+.portfolio-editorial-intro {
+    padding: 140px 80px;
+    background: #F5F1EA;
+    text-align: center;
 }
 
-.portfolio-info h3{
+.portfolio-editorial-intro h2 {
+    font-size: clamp(50px, 6vw, 95px);
+    line-height: 1;
+    font-weight: 400;
+    max-width: 1200px;
+    margin: auto;
+}
 
-    font-size:42px;
-
-    line-height:1.2;
-
-    font-weight:400;
+.portfolio-editorial-intro h2::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    background: var(--primary-color);
+    margin: 25px auto 0;
 }
 
 
-/* RESPONSIVE */
+/* =========================================
+   4. PORTFOLIO CARDS — SHARED STYLES
+   — Cinematic hover: zoom + text rises + gradient deepens + gold line
+   — To adjust hover lift: change translateY in :hover
+   — To adjust zoom: change scale in img:hover
+========================================= */
 
-@media(max-width:1100px){
+.portfolio-section {
+    padding: 40px 80px 140px;
+    background: #F5F1EA;
+}
 
-    .portfolio-grid{
+.portfolio-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    background: #111;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
 
-        grid-template-columns:1fr;
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.08);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+    transition: background 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.2));
+}
+
+.portfolio-content {
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
+    z-index: 2;
+    color: #fff;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-content {
+    transform: translateY(-6px);
+}
+
+.portfolio-content p {
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+    color: rgba(255,255,255,0.7);
+}
+
+.portfolio-content h3 {
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* Gold line slides in from left on hover */
+.card-gold-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+    z-index: 3;
+}
+
+.portfolio-card:hover .card-gold-line {
+    transform: scaleX(1);
+}
+
+
+/* =========================================
+   5. MAIN GRID & CARD SIZES
+========================================= */
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.portfolio-right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.portfolio-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* Card heights — adjust to change layout proportions */
+.tall-card  { height: 1100px; }
+.small-card { height: 420px; }
+.wide-card  { height: 520px; }
+
+
+/* =========================================
+   6. INFO CARD (text only, no image)
+========================================= */
+
+.portfolio-info {
+    background: #111;
+    color: #fff;
+    padding: 80px;
+    border-radius: 30px;
+}
+
+.portfolio-info h3 {
+    font-size: 48px;
+    line-height: 1.15;
+    font-weight: 400;
+}
+
+
+/* =========================================
+   7. FULL WIDTH BANNER
+   — Parallax handled by JS (.parallax-img)
+   — Hover triggers slow cinematic zoom
+========================================= */
+
+.portfolio-banner {
+    position: relative;
+    height: 850px;
+    overflow: hidden;
+}
+
+.portfolio-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 8s ease;
+    will-change: transform;
+}
+
+.portfolio-banner:hover img {
+    transform: scale(1.02);
+}
+
+.portfolio-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.15));
+}
+
+.portfolio-banner-content {
+    position: absolute;
+    left: 80px;
+    bottom: 100px;
+    z-index: 2;
+    color: #fff;
+    max-width: 900px;
+}
+
+.portfolio-banner-content p {
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.portfolio-banner-content h2 {
+    font-size: clamp(50px, 6vw, 100px);
+    line-height: 0.95;
+    font-weight: 400;
+}
+
+
+/* =========================================
+   8. DARK EDITORIAL SECTION (original, unchanged)
+========================================= */
+
+.portfolio-dark-section {
+    padding: 160px 80px;
+    background: #111;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.portfolio-dark-left h2 {
+    font-size: clamp(50px, 6vw, 90px);
+    line-height: 1;
+    font-weight: 400;
+    color: #fff;
+}
+
+.portfolio-dark-left h2::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    background: var(--primary-color);
+    margin-top: 25px;
+}
+
+.portfolio-dark-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.portfolio-dark-right p {
+    font-size: 18px;
+    line-height: 2;
+    color: rgba(255,255,255,0.7);
+}
+
+
+/* =========================================
+   9. STICKY EDITORIAL SECTION
+   — Left text sticks while right images scroll past it
+   — To remove: delete section from HTML and this CSS block
+   — To change sticky offset: adjust top value in .sticky-left
+========================================= */
+
+.sticky-editorial {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--light-color);
+    min-height: 100vh;
+}
+
+.sticky-left {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    background: var(--beige-color);
+}
+
+.sticky-left h2 {
+    font-size: clamp(40px, 4vw, 70px);
+    line-height: 1.05;
+    font-weight: 400;
+    margin: 20px 0 30px;
+}
+
+.sticky-left h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: var(--primary-color);
+    margin-top: 25px;
+}
+
+.sticky-left p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: rgba(0,0,0,0.6);
+    max-width: 380px;
+}
+
+.sticky-right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 80px 80px 40px;
+}
+
+.sticky-image {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 600px;
+}
+
+.sticky-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.sticky-image:hover img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   10. HORIZONTAL SCROLL SHOWCASE
+   — Cards scroll left as user scrolls down
+   — Speed/distance: adjustHorizontalScroll() in JS
+   — Card width: .h-card width below
+   — Card height: .h-card height below
+   — Add cards: duplicate .h-card block in HTML
+========================================= */
+
+.horizontal-section {
+    background: var(--dark-color);
+    padding: 120px 0 140px;
+    overflow: hidden;
+}
+
+.horizontal-header {
+    padding: 0 80px 60px;
+    color: #fff;
+}
+
+.horizontal-header h2 {
+    font-size: clamp(40px, 5vw, 80px);
+    font-weight: 400;
+    line-height: 1;
+    margin: 15px 0 20px;
+}
+
+.horizontal-hint {
+    color: var(--primary-color);
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.horizontal-track-wrapper {
+    overflow: hidden;
+    padding: 20px 80px;
+}
+
+/* JS moves this via translateX */
+.horizontal-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    will-change: transform;
+}
+
+.h-card {
+    position: relative;
+    width: 480px;
+    height: 600px;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.h-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.h-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.h-card:hover img {
+    transform: scale(1.06);
+}
+
+.h-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.05));
+    transition: background 0.5s ease;
+}
+
+.h-card:hover .h-card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.15));
+}
+
+.h-card-content {
+    position: absolute;
+    left: 35px;
+    bottom: 35px;
+    color: #fff;
+    z-index: 2;
+    transition: transform 0.5s ease;
+}
+
+.h-card:hover .h-card-content {
+    transform: translateY(-6px);
+}
+
+.h-card-content p {
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    color: rgba(255,255,255,0.7);
+}
+
+.h-card-content h3 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.h-card .card-gold-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+    z-index: 3;
+}
+
+.h-card:hover .card-gold-line {
+    transform: scaleX(1);
+}
+
+
+/* =========================================
+   11. SECOND GRID
+========================================= */
+
+.second-grid { padding-top: 40px; }
+
+
+/* =========================================
+   12. CTA
+========================================= */
+
+.portfolio-cta {
+    padding: 180px 80px;
+    background: #F5F1EA;
+    text-align: center;
+}
+
+.portfolio-cta h2 {
+    font-size: clamp(50px, 6vw, 90px);
+    line-height: 1;
+    font-weight: 400;
+    max-width: 1000px;
+    margin: 30px auto 50px;
+}
+
+.portfolio-cta h2::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    background: var(--primary-color);
+    margin: 25px auto 0;
+}
+
+
+/* =========================================
+   13. PROJECT MODAL
+   — Opens on card click
+   — Close: X button, click outside, or Escape key
+   — Background darkness: edit rgba below
+   — Image max size: edit .modal-img
+========================================= */
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    padding: 20px;
+}
+
+.project-modal.modal-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-close {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+    /* Large tap target on mobile */
+    padding: 10px;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 90vw;
+    max-height: 90vh;
+    transform: scale(0.95);
+    transition: transform 0.5s ease;
+}
+
+.project-modal.modal-open .modal-inner {
+    transform: scale(1);
+}
+
+.modal-img {
+    max-width: 80vw;
+    max-height: 65vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+.modal-info {
+    text-align: center;
+    color: #fff;
+}
+
+.modal-category {
+    letter-spacing: 4px;
+    font-size: 11px;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.modal-title {
+    font-size: clamp(28px, 4vw, 56px);
+    font-weight: 400;
+    line-height: 1;
+}
+
+
+/* =========================================
+   14. REVEAL ANIMATIONS
+   — .reveal       → slides up
+   — .reveal-left  → slides from left
+   — .reveal-right → slides from right
+   — .reveal-zoom  → scales up
+   — JS adds .active when element enters viewport
+   
+   NOTE: reveal-left/right use a smaller translate
+   on mobile to prevent horizontal overflow
+========================================= */
+
+.reveal {
+    opacity: 0;
+    translate: 0 60px;
+    transition: opacity 1s ease, translate 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.reveal-left {
+    opacity: 0;
+    translate: -60px 0;
+    transition: opacity 1s ease, translate 1s ease;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.reveal-right {
+    opacity: 0;
+    translate: 60px 0;
+    transition: opacity 1s ease, translate 1s ease;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.reveal-zoom {
+    opacity: 0;
+    scale: 0.95;
+    transition: opacity 1s ease, scale 1s ease;
+}
+
+.reveal-zoom.active {
+    opacity: 1;
+    scale: 1;
+}
+
+
+/* =========================================
+   15. GRAIN TEXTURE & SMOOTH SCROLL
+   — Grain opacity: 0.03 = very subtle
+   — To disable grain: delete body::before
+========================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    z-index: 9999;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}
+
+
+/* =========================================
+   16. RESPONSIVE — 1100px (tablet)
+========================================= */
+
+@media(max-width: 1100px) {
+
+    .portfolio-grid,
+    .portfolio-dark-section,
+    .two-grid {
+        grid-template-columns: 1fr;
     }
 
-    .tall-card{
-
-        height:700px;
+    .sticky-editorial {
+        grid-template-columns: 1fr;
     }
+
+    /* Sticky no longer sticks on tablet — just flows normally */
+    .sticky-left {
+        position: static;
+        height: auto;
+        padding: 80px;
+    }
+
+    .sticky-right {
+        padding: 0 80px 80px;
+    }
+
+    /* Stats drop below hero content and wrap */
+    .portfolio-hero-stats {
+        position: static;
+        padding: 0 80px 80px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .tall-card { height: 700px; }
 }
 
-@media(max-width:768px){
 
-    .portfolio-section{
+/* =========================================
+   17. RESPONSIVE — 768px (mobile)
+========================================= */
 
-        padding:100px 25px;
+@media(max-width: 768px) {
+
+    /* HERO */
+
+    .portfolio-hero {
+        height: 100svh; /* svh = safe viewport height on mobile browsers */
     }
 
-    .portfolio-row{
-
-        grid-template-columns:1fr;
+    .portfolio-hero-content {
+        left: 25px;
+        right: 25px;
+        bottom: 60px;
+        max-width: 100%;
     }
 
+    .portfolio-hero-content h1 {
+        font-size: clamp(42px, 11vw, 70px);
+    }
+
+    .portfolio-hero-text {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* Stats stack vertically on mobile */
+    .portfolio-hero-stats {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px 25px 40px;
+    }
+
+    .hero-stat {
+        min-width: unset;
+        width: 100%;
+        padding: 20px 25px;
+    }
+
+    /* INTRO */
+
+    .portfolio-editorial-intro {
+        padding: 80px 25px;
+    }
+
+    /* SECTIONS */
+
+    .portfolio-section {
+        padding: 30px 25px 80px;
+    }
+
+    .portfolio-grid,
+    .portfolio-row,
+    .portfolio-right {
+        gap: 20px;
+    }
+
+    .portfolio-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* All cards same height on mobile */
     .small-card,
-    .wide-card{
-
-        height:350px;
+    .wide-card,
+    .tall-card {
+        height: 340px;
     }
 
-    .portfolio-content{
-
-        left:25px;
-        bottom:25px;
+    .portfolio-content {
+        left: 20px;
+        bottom: 20px;
     }
 
-    .portfolio-content h3{
-
-        font-size:26px;
+    .portfolio-content h3 {
+        font-size: 26px;
     }
 
-    .portfolio-info{
+    /* INFO CARD */
 
-        padding:40px;
+    .portfolio-info {
+        padding: 40px 25px;
     }
 
-    .portfolio-info h3{
+    .portfolio-info h3 {
+        font-size: 30px;
+    }
 
-        font-size:30px;
+    /* BANNER */
+
+    .portfolio-banner {
+        height: 480px;
+    }
+
+    .portfolio-banner-content {
+        left: 25px;
+        right: 25px;
+        bottom: 40px;
+    }
+
+    /* DARK SECTION */
+
+    .portfolio-dark-section {
+        padding: 80px 25px;
+        gap: 40px;
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-dark-right p {
+        font-size: 16px;
+    }
+
+    /* STICKY SECTION */
+
+    .sticky-left {
+        position: static;
+        height: auto;
+        padding: 60px 25px 40px;
+    }
+
+    .sticky-right {
+        padding: 0 25px 60px;
+        gap: 20px;
+    }
+
+    .sticky-image {
+        height: 300px;
+    }
+
+    /* HORIZONTAL SCROLL
+       On mobile: disable the JS scroll effect,
+       let cards scroll naturally with touch */
+
+    .horizontal-section {
+        padding: 80px 0 100px;
+    }
+
+    .horizontal-header {
+        padding: 0 25px 40px;
+    }
+
+    .horizontal-track-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 10px 25px 30px;
+        /* Smooth momentum scrolling on iOS */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* hide scrollbar Firefox */
+    }
+
+    .horizontal-track-wrapper::-webkit-scrollbar {
+        display: none; /* hide scrollbar Chrome/Safari */
+    }
+
+    /* On mobile the track just lays flat — user swipes it */
+    .horizontal-track {
+        transform: none !important;
+    }
+
+    .h-card {
+        width: 280px;
+        height: 380px;
+    }
+
+    /* CTA */
+
+    .portfolio-cta {
+        padding: 100px 25px;
+    }
+
+    /* MODAL */
+
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 22px;
+    }
+
+    .modal-img {
+        max-width: 92vw;
+        max-height: 50vh;
+    }
+
+    .modal-title {
+        font-size: clamp(22px, 6vw, 36px);
+    }
+
+    /* REVEAL — smaller translate prevents horizontal overflow on narrow screens */
+    .reveal-left {
+        translate: -30px 0;
+    }
+
+    .reveal-right {
+        translate: 30px 0;
+    }
+}
+
+
+/* =========================================
+   18. RESPONSIVE — 480px (small phones)
+========================================= */
+
+@media(max-width: 480px) {
+
+    .portfolio-hero-content h1 {
+        font-size: clamp(36px, 10vw, 56px);
+    }
+
+    .portfolio-hero-text {
+        display: none; /* hides subtitle text on very small screens to reduce clutter */
+    }
+
+    .h-card {
+        width: 240px;
+        height: 320px;
+    }
+
+    .portfolio-content h3 {
+        font-size: 22px;
     }
 }
