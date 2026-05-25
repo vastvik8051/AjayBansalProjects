@@ -86,3 +86,5 @@ const observer = new IntersectionObserver((entries, observer) => {
 });
 
 observer.observe(statsSection);
+
+
