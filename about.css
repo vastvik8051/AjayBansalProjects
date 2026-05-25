@@ -421,6 +421,122 @@ h4 {
 }
 
 
+/* =========================================
+   CLIENTS SECTION
+========================================= */
+
+.clients-section{
+
+    padding:120px 80px;
+
+    background:#F5F1EA;
+
+    text-align:center;
+}
+
+
+/* TOP */
+
+.clients-top{
+
+    margin-bottom:70px;
+}
+
+.clients-top h2{
+
+    font-size:clamp(45px,6vw,80px);
+
+    line-height:1.05;
+
+    font-weight:400;
+}
+
+
+/* GRID */
+
+.clients-grid{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:18px;
+
+    max-width:1200px;
+
+    margin:auto;
+}
+
+
+/* BOX */
+
+.client-box{
+
+    padding:22px 34px;
+
+    background:#fff;
+
+    border:1px solid rgba(0,0,0,0.06);
+
+    color:#1d3557;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    transition:0.4s ease;
+
+    cursor:default;
+
+    border-radius: 40px;
+
+    width: 500px;
+}
+
+
+/* HOVER */
+
+.client-box:hover{
+
+    transform:translateY(-5px);
+
+    background: var(--beige-color);
+
+    color: #0D0D0D;
+
+    border-color:#111;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .clients-section{
+
+        padding:80px 25px;
+    }
+
+    .clients-top{
+
+        margin-bottom:50px;
+    }
+
+    .client-box{
+
+        width:400px;
+
+        padding:18px 20px;
+
+        font-size:13px;
+
+        letter-spacing:1.5px;
+    }
+}
+
+
 /* CTA */
 
 .about-cta{

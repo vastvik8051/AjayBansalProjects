@@ -1,42 +1,111 @@
-/* HERO */
+/* =========================================
+   CONTACT HERO
+========================================= */
 
 .contact-hero{
 
-    padding:240px 80px 140px;
+    padding:120px 80px 120px;
 
-    background:#F5F1EA;
+    background:#111;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.contact-hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(198,161,110,0.08),
+    transparent 60%);
+
+    pointer-events:none;
 }
 
 .contact-hero h1{
 
-    font-size:clamp(60px,8vw,130px);
+    font-size:clamp(60px,8vw,100px);
 
     line-height:0.95;
 
-    max-width:900px;
+    max-width:1100px;
+
+    margin:auto auto 30px;
 
     font-weight:400;
+
+    color:#fff;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.contact-hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,0.72);
+
+    position:relative;
+
+    z-index:2;
+}
+
+.hero-subtitle{
+
+    color:var(--primary-color) !important;
+
+    letter-spacing:4px;
+
+    margin-bottom:25px !important;
+
+    text-transform:uppercase;
+
+    font-size:14px;
 }
 
 
-/* INTRO */
+/* =========================================
+   CONTACT INTRO
+========================================= */
 
 .contact-intro{
 
-    padding:0 80px 160px;
+    padding:80px 80px 100px;
 
     background:#F5F1EA;
 
     display:grid;
 
-    grid-template-columns:0.6fr 1.4fr;
+    grid-template-columns:0.5fr 1.5fr;
 
     gap:80px;
 }
 
+.contact-intro-left{
+
+    display:flex;
+
+    align-items:flex-start;
+}
+
 .contact-intro-right h2{
 
-    font-size:clamp(42px,5vw,80px);
+    font-size:clamp(42px,5vw,60px);
 
     line-height:1.08;
 
@@ -44,11 +113,15 @@
 }
 
 
-/* GRID */
+/* =========================================
+   CONTACT GRID
+========================================= */
 
 .contact-grid{
 
-    padding:0 80px 180px;
+    padding:0 80px 40px;
+
+    background:#fff;
 
     display:grid;
 
@@ -57,10 +130,26 @@
     gap:40px;
 
     align-items:start;
+    margin-top: 50px;
+}
+
+.contact-grid h1{
+
+    grid-column:1/-1;
+
+    font-size:clamp(45px,6vw,90px);
+
+    line-height:1;
+
+    margin-bottom:20px;
+
+    font-weight:400;
 }
 
 
-/* FORM */
+/* =========================================
+   FORM
+========================================= */
 
 .contact-form-card{
 
@@ -68,12 +157,17 @@
 
     padding:70px;
 
-    border-radius:28px;
+    border-radius:30px;
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,0.18);
 }
 
 .contact-form-card .section-tag{
 
     margin-bottom:50px;
+
+    color:var(--primary-color);
 }
 
 .form-group{
@@ -90,7 +184,7 @@
 
     border:none;
 
-    border-bottom:1px solid rgba(255,255,255,0.15);
+    border-bottom:1px solid rgba(255,255,255,0.08);
 
     padding:18px 0;
 
@@ -99,6 +193,8 @@
     font-size:16px;
 
     outline:none;
+
+    transition:0.4s ease;
 }
 
 .form-group textarea{
@@ -114,8 +210,16 @@
     color:rgba(255,255,255,0.45);
 }
 
+.form-group input:focus,
+.form-group textarea:focus{
 
-/* CONTACT INFO */
+    border-bottom:1px solid var(--primary-color);
+}
+
+
+/* =========================================
+   CONTACT INFO
+========================================= */
 
 .contact-info-wrapper{
 
@@ -132,19 +236,34 @@
 
     padding:70px;
 
-    border-radius:28px;
+    border-radius:30px;
 
     border:1px solid rgba(0,0,0,0.05);
+
+    height:100%;
+}
+
+.contact-info-card .section-tag{
+
+    margin-bottom:50px;
 }
 
 .contact-item{
 
-    margin-bottom:45px;
+    margin-bottom:35px;
+
+    padding-bottom:25px;
+
+    border-bottom:1px solid rgba(0,0,0,0.06);
 }
 
 .contact-item:last-child{
 
     margin-bottom:0;
+
+    padding-bottom:0;
+
+    border-bottom:none;
 }
 
 .contact-item h4{
@@ -168,30 +287,15 @@
 }
 
 
-/* IMAGE */
-
-.contact-image{
-
-    overflow:hidden;
-
-    border-radius:28px;
-}
-
-.contact-image img{
-
-    width:100%;
-
-    height:500px;
-
-    object-fit:cover;
-}
-
-
-/* MAP */
+/* =========================================
+   MAP
+========================================= */
 
 .contact-map{
 
-    padding:0 80px 180px;
+    padding:0 80px 40px;
+
+    background:#fff;
 }
 
 .contact-map iframe{
@@ -202,15 +306,31 @@
 
     border:none;
 
-    border-radius:28px;
+    border-radius:35px;
+
+    filter:grayscale(100%) contrast(1.05);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,0.12);
+
+    transition:0.6s ease;
+}
+
+.contact-map iframe:hover{
+
+    filter:grayscale(20%) contrast(1.05);
+
+    transform:scale(1.01);
 }
 
 
-/* CTA */
+/* =========================================
+   CTA
+========================================= */
 
 .contact-cta{
 
-    padding:180px 80px;
+    padding:160px 80px;
 
     background:#111;
 
@@ -233,7 +353,9 @@
 }
 
 
-/* RESPONSIVE */
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media(max-width:1100px){
 
@@ -242,7 +364,19 @@
 
         grid-template-columns:1fr;
     }
+
+    .contact-intro{
+
+        gap:40px;
+    }
+
+    .contact-grid{
+
+        padding-bottom:100px;
+    }
 }
+
+
 
 @media(max-width:768px){
 
@@ -259,16 +393,68 @@
     .contact-hero{
 
         padding-top:180px;
+
+        padding-bottom:100px;
+    }
+
+    .contact-hero h1{
+
+        line-height:1.05;
+    }
+
+    .contact-hero p{
+
+        font-size:15px;
+    }
+
+    .contact-intro{
+
+        padding-top:50px;
+
+        padding-bottom:60px;
+    }
+
+    .contact-grid{
+
+        padding-top:20px;
+
+        padding-bottom:80px;
+    }
+
+    .contact-grid h1{
+
+        line-height:1.1;
     }
 
     .contact-form-card,
     .contact-info-card{
 
-        padding:40px;
+        padding:35px 25px;
+
+        border-radius:22px;
+    }
+
+    .contact-item p{
+
+        font-size:16px;
     }
 
     .contact-map iframe{
 
-        height:400px;
+        height:420px;
+
+        border-radius:25px;
+    }
+
+    .contact-cta{
+
+        padding-top:100px;
+
+        padding-bottom:100px;
+    }
+
+    .contact-cta h2{
+
+        line-height:1.15;
     }
 }
