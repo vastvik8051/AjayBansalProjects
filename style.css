@@ -1431,7 +1431,7 @@ nav a:hover::after {
 
 .footer-brand h2 {
 
-    font-size: clamp(50px, 6vw, 50px);
+    font-size: clamp(20px, 6vw, 30px);
 
     line-height: 1.05;
 
