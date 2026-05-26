@@ -135,12 +135,13 @@
     position: absolute;
     left: 80px;
     bottom: 200px;
-    z-index: 2;
+    z-index: 3;
     max-width: 950px;
+    text-align: center;
 }
 
 .portfolio-hero-content h1 {
-    font-size: clamp(70px, 9vw, 140px);
+    font-size: clamp(70px, 9vw, 90px);
     line-height: 0.9;
     color: #fff;
     font-weight: 400;
@@ -151,15 +152,16 @@
     font-size: 20px;
     line-height: 1.9;
     color: rgba(255,255,255,0.75);
-    max-width: 700px;
+    /* max-width: 700px; */
+    text-align: center;
 }
 
 /* HERO STATS */
 
 .portfolio-hero-stats {
     position: absolute;
-    right: 80px;
-    bottom: 80px;
+    right: 50px;
+    bottom: 50px;
     z-index: 3;
     display: flex;
     gap: 25px;

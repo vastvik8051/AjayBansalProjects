@@ -10,9 +10,9 @@ closeBtn.style.cssText = `
     right: 20px;
     background: transparent;
     color: #C6A16E;
-    // border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid transparent;
     padding: 8px 16px;
-    border-radius: 50px;
+    // border-radius: 50px;
     cursor: pointer;
     font-size: 12px;
     letter-spacing: 2px;
