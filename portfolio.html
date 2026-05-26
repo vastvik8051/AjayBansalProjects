@@ -77,7 +77,7 @@
 
     <div class="portfolio-hero-content">
 
-        <p class="section-tag reveal-zoom">
+        <p class="section-tag">
             Our Work
         </p>
 
@@ -96,7 +96,7 @@
 
     <!-- FLOATING STATS — duplicate .hero-stat to add more -->
     <div class="portfolio-hero-stats">
-        <div class="hero-stat">
+        <div class="hero-stat reveal">
             <h3>40+</h3>
             <p>YEARS EXPERIENCE</p>
         </div>
@@ -140,100 +140,149 @@
 <section class="portfolio-section">
     <div class="portfolio-grid">
 
-        <!-- LEFT — tall feature card -->
-        <div class="portfolio-card tall-card reveal-left"
+        <div class="portfolio-card"
              data-category="RESIDENTIAL • GWALIOR"
-             data-title="Luxury Villa">
-            <img src="./assets/img/2.webp" alt="Luxury Villa">
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-content">
-                <p>RESIDENTIAL • GWALIOR</p>
-                <h3>Luxury Villa</h3>
+             data-title="Luxury Villa"
+             data-images='["./assets/img/2.webp","./assets/img/3.webp","./assets/img/4.webp"]'>
+           
+             <div class="card-img-wrap">
+                
+                <img src="./assets/img/2.webp" alt="Luxury Villa">
+                
+                <span class="photo-badge">+2 PHOTOS</span>
+            
             </div>
-            <!-- Gold line animates upward on hover -->
+            
+            <div class="card-body">
+                
+                <p class="card-category">RESIDENTIAL • GWALIOR</p>
+                
+                <h3 class="card-title">Luxury Villa</h3>
+                
+                <p class="card-location">⊙ Gwalior</p>
+                
+                <p class="card-desc">A premium residence featuring contemporary architecture, timeless materials, and spaces designed for refined living.</p>
+                
+                <div class="card-thumbs">
+                    
+                    <img src="./assets/img/3.webp" alt="">
+                    
+                    <img src="./assets/img/4.webp" alt="">
+                
+                </div>
+            
+            </div>
+
+            <div class="card-gold-line"></div>
+        
+        </div>
+
+        
+        <div class="portfolio-card"
+             data-category="COMMERCIAL"
+             data-title="Office Space"
+             data-images='["./assets/img/3.webp","./assets/img/5.webp"]'>
+            <div class="card-img-wrap">
+                <img src="./assets/img/3.webp" alt="Office Space">
+                <span class="photo-badge">+1 PHOTO</span>
+            </div>
+            <div class="card-body">
+                <p class="card-category">COMMERCIAL</p>
+                <h3 class="card-title">Office Space</h3>
+                <p class="card-location">⊙ Gwalior</p>
+                <p class="card-desc">A landmark commercial space at City Center, designed to maximize utility while creating a distinctive urban presence.</p>
+                <div class="card-thumbs">
+                    <img src="./assets/img/5.webp" alt="">
+                </div>
+            </div>
             <div class="card-gold-line"></div>
         </div>
 
-        <!-- RIGHT COLUMN — mixed sizes for editorial rhythm -->
-        <div class="portfolio-right">
-
-            <div class="portfolio-row">
-
-                <div class="portfolio-card small-card reveal-zoom"
-                     data-category="COMMERCIAL"
-                     data-title="Office Space">
-                    <img src="./assets/img/3.webp" alt="Office Space">
-                    <div class="portfolio-overlay"></div>
-                    <div class="portfolio-content">
-                        <p>COMMERCIAL</p>
-                        <h3>Office Space</h3>
-                    </div>
-                    <div class="card-gold-line"></div>
-                </div>
-
-                <div class="portfolio-card small-card reveal-zoom"
-                     data-category="INTERIORS"
-                     data-title="Modern Interiors">
-                    <img src="./assets/img/4.webp" alt="Modern Interiors">
-                    <div class="portfolio-overlay"></div>
-                    <div class="portfolio-content">
-                        <p>INTERIORS</p>
-                        <h3>Modern Interiors</h3>
-                    </div>
-                    <div class="card-gold-line"></div>
-                </div>
-
+        <div class="portfolio-card"
+             data-category="INTERIORS"
+             data-title="Modern Interiors"
+             data-images='["./assets/img/4.webp","./assets/img/6.webp","./assets/img/7.webp"]'>
+            <div class="card-img-wrap">
+                <img src="./assets/img/4.webp" alt="Modern Interiors">
+                <span class="photo-badge">+2 PHOTOS</span>
             </div>
+            <div class="card-body">
+                <p class="card-category">INTERIORS</p>
+                <h3 class="card-title">Modern Interiors</h3>
+                <p class="card-location">⊙ Gwalior</p>
+                <p class="card-desc">High-end interior design combining brand identity with an inviting, aspirational living environment.</p>
+                <div class="card-thumbs">
+                    <img src="./assets/img/6.webp" alt="">
+                    <img src="./assets/img/7.webp" alt="">
+                </div>
+            </div>
+            <div class="card-gold-line"></div>
+        </div>
 
-            <div class="portfolio-card wide-card reveal-right"
-                 data-category="CONTEMPORARY DESIGN"
-                 data-title="Elevated Urban Living">
+        <div class="portfolio-card"
+             data-category="CONTEMPORARY DESIGN"
+             data-title="Elevated Urban Living"
+             data-images='["./assets/img/5.webp","./assets/img/8.webp"]'>
+            <div class="card-img-wrap">
                 <img src="./assets/img/5.webp" alt="Elevated Urban Living">
-                <div class="portfolio-overlay"></div>
-                <div class="portfolio-content">
-                    <p>CONTEMPORARY DESIGN</p>
-                    <h3>Elevated Urban Living</h3>
+                <span class="photo-badge">+1 PHOTO</span>
+            </div>
+            <div class="card-body">
+                <p class="card-category">CONTEMPORARY DESIGN</p>
+                <h3 class="card-title">Elevated Urban Living</h3>
+                <p class="card-location">⊙ Gwalior</p>
+                <p class="card-desc">Spaces designed to feel cinematic, refined, and unforgettable — blending modern elegance with architectural clarity.</p>
+                <div class="card-thumbs">
+                    <img src="./assets/img/8.webp" alt="">
                 </div>
-                <div class="card-gold-line"></div>
             </div>
+            <div class="card-gold-line"></div>
+        </div>
 
-            <!-- Text-only philosophy card — no image -->
-            <div class="portfolio-info reveal-right">
-                <p class="section-tag">DESIGN PHILOSOPHY</p>
-                <h3>
-                    Architecture should
-                    inspire emotion,
-                    elevate living,
-                    and remain timeless.
-                </h3>
+        <div class="portfolio-card"
+             data-category="LUXURY RESIDENCE"
+             data-title="Elegant Family Home"
+             data-images='["./assets/img/7.webp","./assets/img/1.webp","./assets/img/2.webp"]'>
+            <div class="card-img-wrap">
+                <img src="./assets/img/7.webp" alt="Elegant Family Home">
+                <span class="photo-badge">+2 PHOTOS</span>
             </div>
+            <div class="card-body">
+                <p class="card-category">LUXURY RESIDENCE</p>
+                <h3 class="card-title">Elegant Family Home</h3>
+                <p class="card-location">⊙ Gwalior</p>
+                <p class="card-desc">A bespoke private residence featuring premium finishes, spacious interiors, and curated landscaping tailored to the family's lifestyle.</p>
+                <div class="card-thumbs">
+                    <img src="./assets/img/1.webp" alt="">
+                    <img src="./assets/img/2.webp" alt="">
+                </div>
+            </div>
+            <div class="card-gold-line"></div>
+        </div>
 
+        <div class="portfolio-card"
+             data-category="INTERIOR DESIGN"
+             data-title="Timeless Living Spaces"
+             data-images='["./assets/img/8.webp","./assets/img/6.webp"]'>
+            <div class="card-img-wrap">
+                <img src="./assets/img/8.webp" alt="Timeless Living Spaces">
+                <span class="photo-badge">+1 PHOTO</span>
+            </div>
+            <div class="card-body">
+                <p class="card-category">INTERIOR DESIGN</p>
+                <h3 class="card-title">Timeless Living Spaces</h3>
+                <p class="card-location">⊙ Gwalior</p>
+                <p class="card-desc">Every space carefully designed with timeless materials, spatial intelligence, and modern elegance.</p>
+                <div class="card-thumbs">
+                    <img src="./assets/img/6.webp" alt="">
+                </div>
+            </div>
+            <div class="card-gold-line"></div>
         </div>
 
     </div>
 </section>
 
-
-<!-- =========================================
-     FULL WIDTH SHOWCASE BANNER
-     — Parallax effect: image moves slower than scroll
-     — Also has slow cinematic zoom on hover
-     — To change image: update img src below
-========================================= -->
-
-<section class="portfolio-banner reveal-zoom">
-    <img src="./assets/img/6.webp" alt="Bespoke Architecture" class="parallax-img">
-    <div class="portfolio-banner-overlay"></div>
-    <div class="portfolio-banner-content">
-        <p>BESPOKE ARCHITECTURE</p>
-        <h2>
-            Spaces designed
-            to feel cinematic,
-            refined,
-            and unforgettable.
-        </h2>
-    </div>
-</section>
 
 
 <!-- =========================================
@@ -300,15 +349,15 @@
     <!-- These images scroll normally past the fixed left panel -->
     <div class="sticky-right">
 
-        <div class="sticky-image reveal-zoom">
+        <div class="sticky-image">
             <img src="./assets/img/3.webp" alt="">
         </div>
 
-        <div class="sticky-image reveal-zoom">
+        <div class="sticky-image">
             <img src="./assets/img/4.webp" alt="">
         </div>
 
-        <div class="sticky-image reveal-zoom">
+        <div class="sticky-image">
             <img src="./assets/img/5.webp" alt="">
         </div>
 
@@ -413,55 +462,6 @@
         </div>
     </div>
 
-</section>
-
-
-<!-- =========================================
-     SECOND GRID
-========================================= -->
-
-<section class="portfolio-section second-grid">
-    <div class="portfolio-grid two-grid">
-
-        <div class="portfolio-card wide-card reveal-left"
-             data-category="LUXURY RESIDENCE"
-             data-title="Elegant Family Home">
-            <img src="./assets/img/7.webp" alt="">
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-content">
-                <p>LUXURY RESIDENCE</p>
-                <h3>Elegant Family Home</h3>
-            </div>
-            <div class="card-gold-line"></div>
-        </div>
-
-        <div class="portfolio-card wide-card reveal-right"
-             data-category="INTERIOR DESIGN"
-             data-title="Timeless Living Spaces">
-            <img src="./assets/img/8.webp" alt="">
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-content">
-                <p>INTERIOR DESIGN</p>
-                <h3>Timeless Living Spaces</h3>
-            </div>
-            <div class="card-gold-line"></div>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- =========================================
-     CTA
-========================================= -->
-
-<section class="portfolio-cta reveal-zoom">
-    <p class="section-tag">START YOUR PROJECT</p>
-    <h2>
-        Let's Build Something
-        Timeless Together.
-    </h2>
-    <button class="solid-btn">Contact Us</button>
 </section>
 
 

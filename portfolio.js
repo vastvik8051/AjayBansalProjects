@@ -6,7 +6,7 @@
    2.  Scroll Reveal (all directions + stagger)
    3.  Parallax Banner
    4.  Horizontal Scroll Showcase
-   5.  Project Modal (fullscreen preview)
+   5.  Project Modal (fullscreen preview + next/prev)
 ========================================= */
 
 
@@ -25,16 +25,19 @@ window.addEventListener('DOMContentLoaded', () => {
     if (loader) {
         setTimeout(() => {
             loader.classList.add('loader-hidden');
-
-            // Fully remove from DOM after fade completes
             setTimeout(() => {
                 loader.remove();
             }, 800);
-
-        }, 2200); // Total loading screen time in ms
+        }, 2200);
     }
 
 
+    
+    
+    
+    
+    
+    
     /* =========================================
        2. SCROLL REVEAL — ALL DIRECTIONS + STAGGER
        — Watches: .reveal  .reveal-left  .reveal-right  .reveal-zoom
@@ -52,25 +55,32 @@ window.addEventListener('DOMContentLoaded', () => {
         reveals.forEach((element, index) => {
             const windowHeight = window.innerHeight;
             const elementTop = element.getBoundingClientRect().top;
-            const revealPoint = 120; // px from bottom of viewport to trigger
+            const revealPoint = 120;
 
             if (elementTop < windowHeight - revealPoint) {
                 setTimeout(() => {
                     element.classList.add('active');
-                }, index * 120); // stagger delay
+                }, index * 120);
             }
         });
     }
 
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // run once on load for elements already in view
+    revealOnScroll();
 
 
+   
+   
+   
+   
+   
+   
+   
+   
     /* =========================================
        3. PARALLAX BANNER
        — Image with class .parallax-img moves at half scroll speed
-       — Creates depth: image moves slower than the page
-       — To change parallax strength: edit the 0.3 multiplier (lower = subtler)
+       — To change parallax strength: edit the 0.3 multiplier
        — To disable: delete this block
     ========================================= */
 
@@ -78,13 +88,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function updateParallax() {
         if (!parallaxImg) return;
-
         const banner = parallaxImg.closest('.portfolio-banner');
         if (!banner) return;
-
         const bannerTop = banner.getBoundingClientRect().top;
-        const offset = bannerTop * 0.3; // 0.3 = parallax strength
-
+        const offset = bannerTop * 0.3;
         parallaxImg.style.transform = `scale(1.08) translateY(${offset}px)`;
     }
 
@@ -92,59 +99,78 @@ window.addEventListener('DOMContentLoaded', () => {
     updateParallax();
 
 
+   
+   
+   
+   
+   
+   
+   
+   
+   
     /* =========================================
        4. HORIZONTAL SCROLL SHOWCASE
        — Moves the card track LEFT as user scrolls DOWN
        — Only activates when the section is in view
        — To adjust scroll distance: change the scrollMultiplier value
-       — To disable on mobile: the media query at bottom handles this
+       — To disable on mobile: handled below
     ========================================= */
 
-    const horizontalSection = document.getElementById('horizontalSection');
     const horizontalTrack = document.getElementById('horizontalTrack');
+const wrapper = horizontalTrack?.parentElement;
 
-    function adjustHorizontalScroll() {
-        if (!horizontalSection || !horizontalTrack) return;
+if (horizontalTrack && wrapper) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-        // Disable on small screens
-        if (window.innerWidth < 768) {
-            horizontalTrack.style.transform = 'translateX(0)';
-            return;
-        }
+    wrapper.style.overflowX = 'auto';
+    wrapper.style.cursor = 'grab';
+    wrapper.style.scrollbarWidth = 'none';
 
-        const sectionTop = horizontalSection.getBoundingClientRect().top;
-        const sectionHeight = horizontalSection.offsetHeight;
-        const windowHeight = window.innerHeight;
+    wrapper.addEventListener('mousedown', (e) => {
+        isDown = true;
+        wrapper.style.cursor = 'grabbing';
+        startX = e.pageX - wrapper.offsetLeft;
+        scrollLeft = wrapper.scrollLeft;
+    });
 
-        // Only move when section is in view
-        if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+    wrapper.addEventListener('mouseleave', () => {
+        isDown = false;
+        wrapper.style.cursor = 'grab';
+    });
 
-            // How far through the section we've scrolled (0 to 1)
-            const progress = (windowHeight - sectionTop) / (sectionHeight + windowHeight);
+    wrapper.addEventListener('mouseup', () => {
+        isDown = false;
+        wrapper.style.cursor = 'grab';
+    });
 
-            // Total scrollable width of the track
-            const trackWidth = horizontalTrack.scrollWidth - horizontalTrack.offsetWidth;
-
-            // scrollMultiplier controls how far cards travel
-            // increase for more scroll, decrease for less
-            const scrollMultiplier = 1.2;
-
-            const translateX = Math.min(progress * trackWidth * scrollMultiplier, trackWidth);
-
-            horizontalTrack.style.transform = `translateX(-${translateX}px)`;
-        }
-    }
-
-    window.addEventListener('scroll', adjustHorizontalScroll);
-    adjustHorizontalScroll();
+    wrapper.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - wrapper.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        wrapper.scrollLeft = scrollLeft - walk;
+    });
+}
 
 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     /* =========================================
-       5. PROJECT MODAL — FULLSCREEN PREVIEW
+       5. PROJECT MODAL — FULLSCREEN PREVIEW + NEXT/PREV
        — Opens when any .portfolio-card or .h-card is clicked
-       — Reads data-category and data-title from the card
-       — Reads the img src from the card's first <img>
-       — Close: X button, click outside image, or Escape key
+       — Supports multiple images via data-images attribute
+       — Navigate with prev/next buttons or keyboard arrows
+       — Close: X button, click outside, or Escape key
     ========================================= */
 
     const modal = document.getElementById('projectModal');
@@ -152,49 +178,113 @@ window.addEventListener('DOMContentLoaded', () => {
     const modalImg = document.getElementById('modalImg');
     const modalCategory = document.getElementById('modalCategory');
     const modalTitle = document.getElementById('modalTitle');
+    const modalPrev = document.getElementById('modalPrev');
+    const modalNext = document.getElementById('modalNext');
 
-    // Open modal when any card is clicked
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openModal(images, index, category, title) {
+        currentImages = images;
+        currentIndex = index;
+        modalImg.src = images[index];
+        modalImg.alt = title;
+        modalCategory.textContent = category;
+        modalTitle.textContent = title;
+        modal.classList.add('modal-open');
+        document.body.style.overflow = 'hidden';
+        updateModalNav();
+    }
+
+    function updateModalNav() {
+        if (!modalPrev || !modalNext) return;
+        modalPrev.style.opacity = currentIndex === 0 ? '0.3' : '1';
+        modalNext.style.opacity = currentIndex === currentImages.length - 1 ? '0.3' : '1';
+        // hide nav buttons if only one image
+        const showNav = currentImages.length > 1;
+        modalPrev.style.display = showNav ? 'flex' : 'none';
+        modalNext.style.display = showNav ? 'flex' : 'none';
+    }
+
+    function closeModal() {
+        modal.classList.remove('modal-open');
+        document.body.style.overflow = '';
+    }
+
+    if (modalPrev) {
+        modalPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex > 0) {
+                currentIndex--;
+                modalImg.src = currentImages[currentIndex];
+                updateModalNav();
+            }
+        });
+    }
+
+    if (modalNext) {
+        modalNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex < currentImages.length - 1) {
+                currentIndex++;
+                modalImg.src = currentImages[currentIndex];
+                updateModalNav();
+            }
+        });
+    }
+
     document.querySelectorAll('.portfolio-card, .h-card').forEach(card => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+            const images = JSON.parse(card.dataset.images || '[]');
 
-            // Get data from card attributes
-            const imgSrc = card.querySelector('img').src;
-            const category = card.dataset.category || '';
-            const title = card.dataset.title || '';
+            // fallback: if no data-images, use the card's main img
+            const allImages = images.length > 0
+                ? images
+                : [card.querySelector('img').src];
 
-            // Populate modal
-            modalImg.src = imgSrc;
-            modalImg.alt = title;
-            modalCategory.textContent = category;
-            modalTitle.textContent = title;
+            let startIndex = 0;
 
-            // Show modal
-            modal.classList.add('modal-open');
-            document.body.style.overflow = 'hidden'; // prevent background scroll
+            // if a thumbnail was clicked, open at that image
+            if (e.target.closest('.card-thumbs img')) {
+                const clickedSrc = e.target.src;
+                const found = allImages.findIndex(i =>
+                    clickedSrc.includes(i.split('/').pop())
+                );
+                startIndex = found >= 0 ? found : 0;
+            }
+
+            openModal(
+                allImages,
+                startIndex,
+                card.dataset.category || '',
+                card.dataset.title || ''
+            );
         });
     });
 
-    // Close on X button click
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
+    if (modalClose) modalClose.addEventListener('click', closeModal);
 
-    // Close on clicking outside the image (on dark background)
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
     }
 
-    // Close on Escape key
+    // keyboard navigation
     document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('modal-open')) return;
         if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowRight' && currentIndex < currentImages.length - 1) {
+            currentIndex++;
+            modalImg.src = currentImages[currentIndex];
+            updateModalNav();
+        }
+        if (e.key === 'ArrowLeft' && currentIndex > 0) {
+            currentIndex--;
+            modalImg.src = currentImages[currentIndex];
+            updateModalNav();
+        }
     });
-
-    function closeModal() {
-        modal.classList.remove('modal-open');
-        document.body.style.overflow = ''; // restore scroll
-    }
 
 
 }); // end DOMContentLoaded
