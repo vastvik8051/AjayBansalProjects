@@ -234,7 +234,9 @@ img {
 
     z-index: 1001;
 
-    background: rgba(15, 15, 15, 0.12);
+    /* background: rgba(15, 15, 15, 0.12); */
+    background: #fff;
+    
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
@@ -243,11 +245,13 @@ img {
     transition: 0.5s ease;
 
     padding: 0 30px;
+    
 }
 
 .navbar.scrolled {
 
-    background: rgba(255, 255, 255, 0.05);
+    /* background: rgba(255, 255, 255, 0.05); */
+    background: #fff;
 
     backdrop-filter: blur(25px);
 
@@ -258,12 +262,12 @@ img {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
 }
 
-.navbar.scrolled nav a,
+/* .navbar.scrolled nav a,
 .navbar.scrolled .logo h1,
 .navbar.scrolled .logo p {
 
     color: var(--primary-color);
-}
+} */
 
 .logo {
     display: flex;
@@ -284,7 +288,7 @@ img {
 
 .logo h1,
 .logo p {
-    color: #fff;
+    color: #0C0C0C;
 }
 
 .logo h1 {
@@ -300,6 +304,7 @@ img {
 nav {
     display: flex;
     gap: 40px;
+    color: #0C0C0C;
 }
 
 nav a {
@@ -308,9 +313,9 @@ nav a {
 
     text-decoration: none;
 
-    color: #F5F1EA;
+    color: #0C0C0C;
 
-    font-size: 13px;
+    font-size: 18px;
 
     font-weight: 500;
 
@@ -372,6 +377,8 @@ nav a:hover::after {
     color: white;
 
     font-weight: 600;
+
+    font-size: 15px;
 }
 
 .solid-btn:hover {
@@ -380,13 +387,15 @@ nav a:hover::after {
 
 .glass-btn {
 
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--primary-color);
 
     color: #fff;
 
     border: 1px solid rgba(255, 255, 255, 0.12);
 
     backdrop-filter: blur(12px);
+
+    font-size: 13px;
 }
 
 /* =========================================
@@ -1548,6 +1557,34 @@ nav a:hover::after {
     color: rgba(255, 255, 255, 0.45);
 
     font-size: 14px;
+}
+
+
+/* whatsapp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float img {
+    width: 32px;
+    height: 32px;
 }
 
 /* =========================================

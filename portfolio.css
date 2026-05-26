@@ -1019,6 +1019,10 @@ body::before {
         padding: 80px 25px;
     }
 
+    .portfolio-editorial-intro .section-tag{
+        font-size: 30px;
+    }
+
     /* SECTIONS */
 
     .portfolio-section {
