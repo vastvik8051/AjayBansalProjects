@@ -73,14 +73,14 @@
 }
 
 .loader-logo {
-    width: 80px;
+    width: 280px;
     opacity: 0;
     animation: loaderFadeIn 0.8s ease 0.3s forwards;
 }
 
 .loader-line {
-    width: 0;
-    height: 1px;
+    width: 30px;
+    height: 3px;
     background: var(--primary-color);
     animation: loaderLine 1s ease 0.8s forwards;
 }
@@ -88,7 +88,7 @@
 .loader-text {
     color: rgba(255,255,255,0.5);
     letter-spacing: 4px;
-    font-size: 11px;
+    font-size: 30px;
     opacity: 0;
     animation: loaderFadeIn 0.8s ease 1.4s forwards;
 }
@@ -203,7 +203,7 @@
 }
 
 .portfolio-editorial-intro h2 {
-    font-size: clamp(50px, 6vw, 95px);
+    font-size: clamp(25px, 6vw, 50px);
     line-height: 1;
     font-weight: 400;
     max-width: 1200px;
@@ -1016,17 +1016,17 @@ body::before {
     /* INTRO */
 
     .portfolio-editorial-intro {
-        padding: 80px 25px;
+        padding: 40px 25px;
     }
 
     .portfolio-editorial-intro .section-tag{
-        font-size: 30px;
+        font-size: 20px;
     }
 
     /* SECTIONS */
 
     .portfolio-section {
-        padding: 30px 25px 80px;
+        padding: 30px 25px 30px;
     }
 
     .portfolio-grid,
@@ -1080,9 +1080,13 @@ body::before {
     /* DARK SECTION */
 
     .portfolio-dark-section {
-        padding: 80px 25px;
+        padding: 30px 25px;
         gap: 40px;
         grid-template-columns: 1fr;
+    }
+
+    .portfolio-dark-left h2{
+        font-size: 25px;
     }
 
     .portfolio-dark-right p {
@@ -1094,7 +1098,16 @@ body::before {
     .sticky-left {
         position: static;
         height: auto;
-        padding: 60px 25px 40px;
+        padding: 30px 25px 30px;
+    }
+
+    .sticky-left h2{
+        margin:0px;
+        font-size: 20px;
+    }
+
+    .sticky-left p{
+        font-size: 20px;
     }
 
     .sticky-right {
@@ -1111,7 +1124,11 @@ body::before {
        let cards scroll naturally with touch */
 
     .horizontal-section {
-        padding: 80px 0 100px;
+        padding: 30px 0 30px;
+    }
+
+    .horizontal-section h2{
+        font-size: 20px;
     }
 
     .horizontal-header {
