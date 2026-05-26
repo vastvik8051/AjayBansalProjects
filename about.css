@@ -427,7 +427,7 @@ h4 {
 
 .clients-section{
 
-    padding:120px 80px;
+    padding:40px 80px;
 
     background:#F5F1EA;
 
@@ -439,7 +439,7 @@ h4 {
 
 .clients-top{
 
-    margin-bottom:70px;
+    margin-bottom:30px;
 }
 
 .clients-top h2{
@@ -516,12 +516,12 @@ h4 {
 
     .clients-section{
 
-        padding:80px 25px;
+        padding:40px 25px;
     }
 
     .clients-top{
 
-        margin-bottom:50px;
+        margin-bottom:15px;
     }
 
     .client-box{
@@ -834,5 +834,6 @@ h4 {
     .about-cta h2{
 
         line-height:1.2;
+        font-size: 30px;
     }
 }

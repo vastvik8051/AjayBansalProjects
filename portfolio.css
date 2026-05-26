@@ -220,6 +220,41 @@
 }
 
 
+/* filters */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    
+    padding: 40px 80px;
+    background: #F5F1EA;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: transparent;
+    color: rgba(0,0,0,0.6);
+    font-size: 11px;
+    letter-spacing: 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+
 /* =========================================
    4. PORTFOLIO CARDS — SHARED STYLES
    — Cinematic hover: zoom + text rises + gradient deepens + gold line
@@ -913,9 +948,9 @@ body::before {
 
     /* Stats drop below hero content and wrap */
     .portfolio-hero-stats {
-        position: static;
-        padding: 0 80px 80px;
-        flex-wrap: wrap;
+        /* position: static; */
+        /* padding: 0 80px 80px; */
+        /* flex-wrap: wrap; */
         gap: 20px;
     }
 
@@ -936,10 +971,18 @@ body::before {
     }
 
     .portfolio-hero-content {
-        left: 25px;
-        right: 25px;
-        bottom: 60px;
-        max-width: 100%;
+        position: absolute !important;
+        left: 25px !important;
+        right: 25px !important;
+        bottom: 220px !important;
+        top: auto !important;
+        transform: none !important;
+        max-width: 100% !important;
+        text-align: center;
+    }
+
+    .portfolio-hero-content .section-tag{
+        font-size: 20px;
     }
 
     .portfolio-hero-content h1 {
@@ -953,18 +996,22 @@ body::before {
 
     /* Stats stack vertically on mobile */
     .portfolio-hero-stats {
-        position: static;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        padding: 20px 25px 40px;
-    }
+    position: absolute;
+    bottom: 30px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+}
 
-    .hero-stat {
-        min-width: unset;
-        width: 100%;
-        padding: 20px 25px;
-    }
+.hero-stat {
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+}
 
     /* INTRO */
 
@@ -1121,6 +1168,58 @@ body::before {
     .reveal-right {
         translate: 30px 0;
     }
+
+     /* FILTER BAR */
+    .filter-bar {
+        padding: 20px 25px 30px;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 10px 16px;
+        font-size: 10px;
+    }
+
+    /* NEW CARD STYLES */
+    .card-img-wrap {
+        height: 200px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
+
+    .card-desc {
+        font-size: 13px;
+    }
+
+    .card-thumbs img {
+        width: 60px;
+        height: 44px;
+    }
+
+    /* HERO — fix centering on mobile */
+    .portfolio-hero-content {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: 140px;
+        width: 90%;
+    }
+
+    /* MODAL NAV BUTTONS */
+    .modal-prev { left: 10px; }
+    .modal-next { right: 10px; }
+
+    .modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
 }
 
 
@@ -1130,13 +1229,37 @@ body::before {
 
 @media(max-width: 480px) {
 
-    .portfolio-hero-content h1 {
-        font-size: clamp(36px, 10vw, 56px);
+    .portfolio-hero-content{
+        position: absolute !important;
+        left: 25px !important;
+        right: 25px !important;
+        bottom: 300px !important;
+        top: auto !important;
+        transform: none !important;
+        max-width: 100% !important;
+        text-align: center;
     }
 
-    .portfolio-hero-text {
-        display: none; /* hides subtitle text on very small screens to reduce clutter */
+    .portfolio-hero-content h1 {
+        font-size: clamp(36px, 10vw, 56px);
+        margin-bottom: 20px;
     }
+    
+
+    .portfolio-hero-stats{
+        display: flex;
+        flex-direction: column;
+        width: 162px;
+    }
+
+    .portfolio-hero-stats h3{
+        font-size: 20px;
+    }
+
+    .portfolio-hero-stats p{
+        font-size: 8px;
+    }
+    
 
     .h-card {
         width: 240px;
@@ -1146,4 +1269,18 @@ body::before {
     .portfolio-content h3 {
         font-size: 22px;
     }
+
+     .filter-btn {
+        padding: 8px 14px;
+        font-size: 10px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-img-wrap {
+        height: 180px;
+    }
+
 }
