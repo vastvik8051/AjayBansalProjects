@@ -425,114 +425,113 @@ h4 {
    CLIENTS SECTION
 ========================================= */
 
-.clients-section{
-
-    padding:40px 80px;
-
-    background:#F5F1EA;
-
-    text-align:center;
+.clients-section {
+    padding: 40px 80px;
+    background: #F5F1EA;
+    text-align: center;
 }
-
 
 /* TOP */
-
-.clients-top{
-
-    margin-bottom:30px;
+.clients-top {
+    margin-bottom: 30px;
 }
 
-.clients-top h2{
-
-    font-size:clamp(45px,6vw,80px);
-
-    line-height:1.05;
-
-    font-weight:400;
+.clients-top h2 {
+    font-size: clamp(45px, 6vw, 80px);
+    line-height: 1.05;
+    font-weight: 400;
 }
-
 
 /* GRID */
-
-.clients-grid{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:18px;
-
-    max-width:1200px;
-
-    margin:auto;
+.clients-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    max-width: 1200px;
+    margin: auto;
 }
-
 
 /* BOX */
-
-.client-box{
-
-    padding:22px 34px;
-
-    background:#fff;
-
-    border:1px solid rgba(0,0,0,0.06);
-
-    color:#1d3557;
-
-    font-size:15px;
-
-    letter-spacing:2px;
-
-    transition:0.4s ease;
-
-    cursor:default;
-
+.client-box {
+    padding: 22px 34px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    color: #1d3557;
+    font-size: 15px;
+    letter-spacing: 2px;
+    transition: 0.4s ease;
+    cursor: default;
     border-radius: 40px;
-
-    width: 500px;
+    width: auto; /* let content decide width */
+    flex: 1 1 300px; /* grow, shrink, min width 300px */
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
 }
 
+.client-box img {
+    width: auto;
+    height: 50px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* BANK IMAGES */
+.bank-img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.bank-img img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
 
 /* HOVER */
-
-.client-box:hover{
-
-    transform:translateY(-5px);
-
+.client-box:hover {
+    transform: translateY(-5px);
     background: var(--beige-color);
-
     color: #0D0D0D;
-
-    border-color:#111;
+    border-color: #111;
 }
 
-
 /* RESPONSIVE */
-
-@media(max-width:768px){
-
-    .clients-section{
-
-        padding:40px 25px;
+@media(max-width: 768px) {
+    .clients-section {
+        padding: 40px 25px;
     }
 
-    .clients-top{
-
-        margin-bottom:15px;
+    .clients-top {
+        margin-bottom: 15px;
     }
 
-    .client-box{
+    .client-box {
+        flex: 1 1 250px;
+        max-width: 100%;
+        padding: 18px 20px;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+    }
 
-        width:400px;
+    .client-box img {
+        height: 40px;
+    }
 
-        padding:18px 20px;
+    .bank-img img {
+        height: 30px;
+    }
+}
 
-        font-size:13px;
-
-        letter-spacing:1.5px;
+@media(max-width: 480px) {
+    .client-box {
+        flex: 1 1 100%;
     }
 }
 
