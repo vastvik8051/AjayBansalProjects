@@ -2164,4 +2164,8 @@ nav a:hover::after {
     .nav-buttons .glass-btn{
         display: none;
     }
+
+    .nav-buttons a{
+        display: none;
+    }
 }

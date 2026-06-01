@@ -274,7 +274,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // open modal when any portfolio card or h-card is clicked
+    // paste here ---------------
+// open modal when any portfolio card or h-card is clicked
     document.querySelectorAll('.portfolio-card, .h-card').forEach(card => {
         card.addEventListener('click', (e) => {
 
@@ -309,6 +310,7 @@ window.addEventListener('DOMContentLoaded', () => {
             );
         });
     });
+    // ----------------------------
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
 

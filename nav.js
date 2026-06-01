@@ -16,20 +16,24 @@ closeBtn.style.cssText = `
     cursor: pointer;
     font-size: 12px;
     letter-spacing: 2px;
+    display: none
 `;
 nav.appendChild(closeBtn);
 
 menuBtn.addEventListener('click', () => {
     nav.classList.add('active');
-    menuBtn.textContent = 'Menu';
+    // menuBtn.textContent = 'Menu';
+    closeBtn.style.display = 'block';
 });
 
 closeBtn.addEventListener('click', () => {
     nav.classList.remove('active');
+    closeBtn.style.display = 'none';
 });
 
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', () => {
         nav.classList.remove('active');
+        // closeBtn.style.display = 'none';
     });
 });
