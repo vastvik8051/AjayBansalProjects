@@ -419,6 +419,7 @@ nav a:hover::after {
 
 .hero-content span {
     color: var(--primary-color);
+    font-size: 75px;
 }
 
 .hero-text {
@@ -772,8 +773,8 @@ nav a:hover::after {
 }
 
 .section-heading h2 {
-    font-size: clamp(40px, 5vw, 70px);
-    max-width: 900px;
+    font-size: clamp(30px, 5vw, 50px);
+    max-width: 1100px;
     line-height: 1.15;
 }
 

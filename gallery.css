@@ -1,4 +1,12 @@
-/* back ground */
+/* =========================================
+   GALLERY.CSS
+========================================= */
+
+
+/* =========================================
+   BACKGROUND VIDEO
+========================================= */
+
 body {
     background: black;
 }
@@ -11,57 +19,169 @@ body {
     object-fit: cover;
     z-index: -1;
 }
-/* body  */
 
-.video-hero {
+
+/* =========================================
+   HERO SECTION
+   — padded so background video peeks on sides
+   — hero card has the main image inside it
+========================================= */
+
+.project-hero {
+    padding: 100px 60px 40px; /* top padding clears navbar; sides show video */
+}
+
+/* the card itself — rounded, clipped, full image inside */
+.project-hero-card {
     position: relative;
     width: 100%;
-    height: 50vh;
+    height: 75vh;
+    border-radius: 24px;
     overflow: hidden;
 }
 
-/* .video-hero video {
-    position: absolute;
-    inset: 0;
+/* main hero image fills the card */
+.project-hero-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-} */
+    display: block;
+}
 
-/* .video-hero-overlay {
+/* dark gradient overlay — heavier on left so text is readable */
+.project-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
-} */
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.75) 0%,
+        rgba(0,0,0,0.3) 60%,
+        rgba(0,0,0,0.05) 100%
+    );
+}
 
-.video-hero-content {
+/* text block — top left of the card */
+.project-hero-content {
     position: absolute;
-    bottom: 80px;
-    left: 80px;
-    z-index: 3;
+    bottom: 30px;
+    left: 50px;
+    z-index: 2;
     color: #fff;
     max-width: 800px;
 }
 
-.video-hero-content h1 {
-    font-size: clamp(48px, 7vw, 90px);
-    font-weight: 400;
-    line-height: 0.95;
-    /* margin-bottom: 20px; */
+/* small category label above title */
+.project-hero-category {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    text-transform: uppercase;
 }
 
-.video-hero-content p {
-    font-size: 16px;
+.project-hero-title {
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.project-hero-desc {
+    font-size: 15px;
     line-height: 1.8;
     color: rgba(255,255,255,0.75);
+    margin-bottom: 30px;
+    max-width: 400px;
 }
+
+/* horizontally scrollable thumbnail strip */
+.project-hero-thumbs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none; /* hide scrollbar Firefox */
+    padding-bottom: 4px;
+    max-width: 100%;
+}
+
+.project-hero-thumbs::-webkit-scrollbar {
+    display: none; /* hide scrollbar Chrome/Safari */
+}
+
+.project-hero-thumbs img {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0; /* don't squish, just scroll */
+    opacity: 0.7;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.project-hero-thumbs img:hover {
+    opacity: 1;
+    border-color: var(--primary-color);
+}
+
+/* =========================================
+   THUMBNAIL ARROWS
+========================================= */
+.thumbs-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.thumb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: #fff;
+
+    width: 28px;
+    height: 52px;
+    border-radius: 4px;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.thumb-arrow:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.thumb-prev {
+    left: 0;
+    border-radius: 0 4px 4px 0; /* flat on left, rounded on right */
+}
+
+.thumb-next {
+    right: 0;
+    border-radius: 4px 0 0 4px; /* rounded on left, flat on right */
+}
+
 
 /* =========================================
    GALLERY
 ========================================= */
 
 .portfolio-gallery {
-    padding: 0px 80px 200px;
+    padding: 40px 60px 200px;
     background: transparent;
 }
 
@@ -85,6 +205,79 @@ body {
     opacity: 0.9;
 }
 
+/* =========================================
+   LIGHTBOX
+========================================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lightbox.lightbox-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 88vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 32px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
 
 /* =========================================
    RESPONSIVE — 1100px
@@ -92,31 +285,25 @@ body {
 
 @media(max-width: 1100px) {
 
-    .hero {
-        padding: 100px 50px 40px;
+    .project-hero {
+        padding: 100px 30px 30px;
     }
 
-    .portfolio-gallery {
-        padding: 0px 50px 180px;
+    .project-hero-card {
+        height: 70vh;
+    }
+
+    .project-hero-thumbs img {
+        width: 200px;
+        height: 130px;
     }
 
     .gallery-grid {
         columns: 3;
     }
 
-    /* background */
-    .video-hero{
-        height: 40vh;
-    }
-
-    .video-hero-content {
-        left: 25px;
-        right: 25px;
-        bottom: 70px;
-    }
-
-    .video-hero-content h1 {
-        font-size: clamp(32px, 9vw, 56px);
+    .portfolio-gallery {
+        padding: 30px 30px 180px;
     }
 }
 
@@ -127,31 +314,38 @@ body {
 
 @media(max-width: 768px) {
 
-    .hero {
-        padding: 90px 25px 20px;
-        height: auto;
+    .project-hero {
+        padding: 90px 16px 24px;
     }
 
-    .hero-img {
-        height: 40vh;
+    .project-hero-card {
+        height: 75vh;
         border-radius: 16px;
-        margin-bottom: 20px;
     }
 
-    .hero-text {
-        padding-bottom: 0;
+    .project-hero-content {
+        bottom: 24px; /* was top:30px — fixed */
+        left: 24px;
+        right: 24px;
+        max-width: 100%;
     }
 
-    .hero-text h1 {
+    .project-hero-title {
         font-size: clamp(28px, 8vw, 48px);
     }
 
-    .hero-text p {
+    .project-hero-desc {
         font-size: 14px;
+        margin-bottom: 20px;
     }
 
-    .portfolio-gallery {
-        padding: 0px 25px 200px;
+    .project-hero-thumbs img {
+        width: 140px;  /* scaled down but still usable */
+        height: 90px;
+    }
+
+    .thumb-arrow {
+        height: 90px; /* match thumb height */
     }
 
     .gallery-grid {
@@ -164,19 +358,8 @@ body {
         border-radius: 8px;
     }
 
-    /* background  */
-    .video-hero{
-        height: 40vh;
-    }
-
-    .video-hero-content {
-        left: 25px;
-        right: 25px;
-        bottom: 70px;
-    }
-
-    .video-hero-content h1 {
-        font-size: clamp(32px, 9vw, 56px);
+    .portfolio-gallery {
+        padding: 24px 16px 200px;
     }
 }
 
@@ -187,19 +370,39 @@ body {
 
 @media(max-width: 480px) {
 
-    .hero {
-        padding: 80px 20px 20px;
+    .project-hero {
+        padding: 80px 10px 16px;
     }
 
-    .hero-img {
-        height: 30vh;
+    .project-hero-card {
+        height: 50vh;
+        border-radius: 12px;
     }
 
-    .hero-text h1 {
-        font-size: clamp(24px, 7vw, 40px);
+    .project-hero-content {
+        bottom: 20px;
+        left: 16px;
+        right: 16px;
+    }
+
+    .project-hero-desc {
+        display: none; /* hides desc on very small screens to save space */
+    }
+
+    .project-hero-thumbs img {
+        width: 110px;
+        height: 72px;
+    }
+
+    .thumb-arrow {
+        height: 72px; /* match thumb height */
     }
 
     .gallery-grid {
         columns: 1;
+    }
+
+    .portfolio-gallery {
+        padding: 30px 30px 80px;
     }
 }

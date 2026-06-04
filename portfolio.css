@@ -41,6 +41,9 @@
     font-size: 11px;
 }
 
+/* effects */
+
+
 
 /* =========================================
    1. LOADING SCREEN
@@ -148,22 +151,6 @@
     background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.35));
 }
 
-/* .portfolio-hero-overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-    linear-gradient(
-        to top,
-        rgba(0,0,0,0.65),
-        rgba(0,0,0,0.25)
-    );
-
-    z-index:1;
-} */
-
 .portfolio-hero-content {
     position: absolute;
     left: 50%;
@@ -190,10 +177,7 @@
 .portfolio-hero-text {
     font-size: 20px;
     line-height: 1.9;
-    /* color: rgba(255,255,255,0.75); */
     color: var(--primary-color);
-
-    /* max-width: 700px; */
     text-align: center;
 }
 
@@ -296,11 +280,12 @@
 
 /* =========================================
    4. PORTFOLIO CARDS — SHARED STYLES
-   — Cinematic hover: zoom + text rises + gradient deepens + gold line
-   — To adjust hover lift: change translateY in :hover
-   — To adjust zoom: change scale in img:hover
+   — COMMENTED OUT: conflicts with mock4.css
+   — Restore these if you remove mock4.css
+   — from this page and go back to the old card style
 ========================================= */
 
+/*
 .portfolio-section {
     padding: 60px 80px 100px;
     background: #F5F1EA;
@@ -311,8 +296,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 }
+*/
 
 /* CARD — now an anchor tag */
+/*
 .portfolio-card {
     position: relative;
     background: #fff;
@@ -330,8 +317,10 @@
     transform: translateY(-6px);
     box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
+*/
 
 /* IMAGE */
+/*
 .card-img-wrap {
     position: relative;
     width: 100%;
@@ -349,8 +338,10 @@
 .portfolio-card:hover .card-img-wrap img {
     transform: scale(1.05);
 }
+*/
 
 /* CARD BODY */
+/*
 .card-body {
     padding: 20px 24px 24px;
 }
@@ -362,8 +353,10 @@
     margin-bottom: 14px;
     line-height: 1.2;
 }
+*/
 
 /* THUMBNAILS */
+/*
 .card-thumbs {
     display: flex;
     gap: 8px;
@@ -381,6 +374,354 @@
 .portfolio-card:hover .card-thumbs img {
     opacity: 1;
 }
+*/
+
+/* new portfolio section  */
+/* =========================================
+   PORTFOLIO SECTION
+========================================= */
+
+.portfolio-section {
+    padding: 80px;
+    background: #F5F1EA;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.portfolio-card {
+    position: relative;
+    height: 420px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: block;
+    background: #111;
+    overflow: visible; /* visible so the divider can sit in the gap */
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+}
+
+/* clip only the inner image/overlay, not the whole card */
+.portfolio-card .card-img-wrap,
+.portfolio-card::after,
+.portfolio-card::before {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, .18);
+}
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.card-img-wrap {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: grayscale(100%);
+
+    transition:
+        transform .9s ease,
+        filter .9s ease;
+}
+
+.portfolio-card:hover .card-img-wrap img {
+    transform: scale(1.08);
+    filter: grayscale(0%);
+}
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.portfolio-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 20px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, .82),
+        rgba(0, 0, 0, .05)
+    );
+
+    transition: .4s ease;
+}
+
+.portfolio-card:hover::after {
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, .65),
+        rgba(0, 0, 0, 0)
+    );
+}
+
+/* =========================================
+   VIEW PROJECT BUTTON
+========================================= */
+
+.portfolio-card::before {
+    content: "VIEW CATEGORY";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    z-index: 3;
+
+    transform: translate(-50%, -50%) scale(.85);
+
+    opacity: 0;
+
+    color: #fff;
+
+    padding: 14px 24px;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, .25);
+
+    backdrop-filter: blur(12px);
+
+    letter-spacing: 2px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    transition: .4s ease;
+}
+
+.portfolio-card:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* =========================================
+   CARD TAG (top-left label)
+========================================= */
+
+.card-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.card-body {
+    position: absolute;
+
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 2;
+}
+
+.card-title {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1;
+
+    color: burlywood;
+
+    margin-bottom: 14px;
+}
+
+/* =========================================
+   THUMBNAILS
+========================================= */
+
+.card-thumbs {
+    display: flex;
+    gap: 8px;
+}
+
+.card-thumbs img {
+    width: 45px;
+    height: 32px;
+
+    object-fit: cover;
+
+    border-radius: 4px;
+
+    opacity: .75;
+
+    transition: .4s ease;
+}
+
+.portfolio-card:hover .card-thumbs img {
+    opacity: 1;
+}
+
+/* =========================================
+   VERTICAL DIVIDER BETWEEN CARDS
+========================================= */
+
+/* The divider sits on the right edge of each card, in the gap */
+.card-divider {
+    position: absolute;
+    top: 5%;
+    right: -14px; /* half the gap (24px / 2 = 12px, +1 for center) */
+    width: 5px;
+    height: 90%;
+    z-index: 10;
+    pointer-events: none;
+
+    /* Gold gradient that fades at top and bottom */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #b8860b 20%,
+        #c9a84c 50%,
+        #b8860b 80%,
+        transparent 100%
+    );
+
+    border-radius: 2px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+/* 5 columns */
+@media (max-width: 1400px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    /* hide divider on the 5th card (last in first row) */
+    .portfolio-card:nth-child(5) .card-divider {
+        display: none;
+    }
+}
+
+/* 4 columns */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .portfolio-card:nth-child(5) .card-divider {
+        display: block;
+    }
+
+    /* hide divider on every 4th card */
+    .portfolio-card:nth-child(4n) .card-divider {
+        display: none;
+    }
+}
+
+/* 3 columns */
+@media (max-width: 1100px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .portfolio-card:nth-child(4n) .card-divider {
+        display: block;
+    }
+
+    /* hide divider on every 3rd card */
+    .portfolio-card:nth-child(3n) .card-divider {
+        display: none;
+    }
+}
+
+/* 2 columns */
+@media (max-width: 768px) {
+    .portfolio-section {
+        padding: 60px 25px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .portfolio-card {
+        height: 320px;
+    }
+
+    .card-title {
+        font-size: 22px;
+    }
+
+    .card-thumbs img {
+        width: 40px;
+        height: 28px;
+    }
+
+    .portfolio-card:nth-child(3n) .card-divider {
+        display: block;
+    }
+
+    /* hide divider on every 2nd card */
+    .portfolio-card:nth-child(2n) .card-divider {
+        display: none;
+    }
+}
+
+/* 1 column — no dividers needed */
+@media (max-width: 500px) {
+    .portfolio-section {
+        padding: 40px 16px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .portfolio-card {
+        height: 380px;
+    }
+
+    .card-divider {
+        display: none;
+    }
+}
+
 
 /* GOLD LINE */
 .card-gold-line {
@@ -398,27 +739,6 @@
 
 .portfolio-card:hover .card-gold-line {
     transform: scaleX(1);
-}
-
-
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio-section {
-        padding: 40px 25px 80px;
-    }
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-    .card-img-wrap {
-        height: 200px;
-    }
 }
 
 
@@ -518,9 +838,6 @@
 
 /* =========================================
    9. STICKY EDITORIAL SECTION
-   — Left text sticks while right images scroll past it
-   — To remove: delete section from HTML and this CSS block
-   — To change sticky offset: adjust top value in .sticky-left
 ========================================= */
 
 .sticky-editorial {
@@ -591,16 +908,11 @@
 
 /* =========================================
    10. HORIZONTAL SCROLL SHOWCASE
-   — Cards scroll left as user scrolls down
-   — Speed/distance: adjustHorizontalScroll() in JS
-   — Card width: .h-card width below
-   — Card height: .h-card height below
-   — Add cards: duplicate .h-card block in HTML
 ========================================= */
 
 .horizontal-section {
     background: var(--dark-color);
-    padding: 60px 0 80px;
+    padding: 10px 0 80px;
     overflow: hidden;
 }
 
@@ -610,7 +922,7 @@
 }
 
 .horizontal-header h2 {
-    font-size: clamp(40px, 5vw, 80px);
+    font-size: clamp(25px, 5vw, 55px);
     font-weight: 400;
     line-height: 1;
     margin: 15px 0 20px;
@@ -627,7 +939,6 @@
     padding: 20px 80px;
 }
 
-/* JS moves this via translateX */
 .horizontal-track {
     display: flex;
     gap: 30px;
@@ -637,8 +948,8 @@
 
 .h-card {
     position: relative;
-    width: 480px;
-    height: 600px;
+    width: 340px;
+    height: 500px;
     border-radius: 24px;
     overflow: hidden;
     cursor: pointer;
@@ -717,6 +1028,48 @@
     transform: scaleX(1);
 }
 
+/* =========================================
+   H-CARD: GRAYSCALE + VIEW PROJECT
+========================================= */
+
+.h-card img {
+    filter: grayscale(100%);
+    transition: filter .9s ease, transform 1s ease;
+}
+
+.h-card:hover img {
+    filter: grayscale(0%);
+}
+
+.h-card::before {
+    content: "VIEW PROJECT";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+
+    transform: translate(-50%, -50%) scale(.85);
+    opacity: 0;
+
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    padding: 14px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    backdrop-filter: blur(12px);
+
+    transition: .4s ease;
+}
+
+.h-card:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
 
 /* =========================================
    11. SECOND GRID
@@ -755,10 +1108,6 @@
 
 /* =========================================
    13. PROJECT MODAL
-   — Opens on card click
-   — Close: X button, click outside, or Escape key
-   — Background darkness: edit rgba below
-   — Image max size: edit .modal-img
 ========================================= */
 
 .project-modal {
@@ -792,7 +1141,6 @@
     opacity: 0.7;
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 2;
-    /* Large tap target on mobile */
     padding: 10px;
     line-height: 1;
 }
@@ -849,14 +1197,6 @@
 
 /* =========================================
    14. REVEAL ANIMATIONS
-   — .reveal       → slides up
-   — .reveal-left  → slides from left
-   — .reveal-right → slides from right
-   — .reveal-zoom  → scales up
-   — JS adds .active when element enters viewport
-   
-   NOTE: reveal-left/right use a smaller translate
-   on mobile to prevent horizontal overflow
 ========================================= */
 
 .reveal {
@@ -906,8 +1246,6 @@
 
 /* =========================================
    15. GRAIN TEXTURE & SMOOTH SCROLL
-   — Grain opacity: 0.03 = very subtle
-   — To disable grain: delete body::before
 ========================================= */
 
 html {
@@ -931,17 +1269,21 @@ body::before {
 
 @media(max-width: 1100px) {
 
-    .portfolio-grid,
     .portfolio-dark-section,
     .two-grid {
         grid-template-columns: 1fr;
     }
 
+    /* COMMENTED OUT: conflicts with mock4.css responsive grid
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    */
+
     .sticky-editorial {
         grid-template-columns: 1fr;
     }
 
-    /* Sticky no longer sticks on tablet — just flows normally */
     .sticky-left {
         position: static;
         height: auto;
@@ -952,11 +1294,7 @@ body::before {
         padding: 0 80px 80px;
     }
 
-    /* Stats drop below hero content and wrap */
     .portfolio-hero-stats {
-        /* position: static; */
-        /* padding: 0 80px 80px; */
-        /* flex-wrap: wrap; */
         gap: 20px;
     }
 
@@ -973,7 +1311,7 @@ body::before {
     /* HERO */
 
     .portfolio-hero {
-        height: 100svh; /* svh = safe viewport height on mobile browsers */
+        height: 100svh;
     }
 
     .portfolio-hero-content {
@@ -1000,24 +1338,23 @@ body::before {
         line-height: 1.7;
     }
 
-    /* Stats stack vertically on mobile */
     .portfolio-hero-stats {
-    position: absolute;
-    bottom: 30px;
-    left: 25px;
-    right: 25px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0;
-}
+        position: absolute;
+        bottom: 30px;
+        left: 25px;
+        right: 25px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0;
+    }
 
-.hero-stat {
-    flex: 1;
-    min-width: 0;
-    padding: 15px;
-}
+    .hero-stat {
+        flex: 1;
+        min-width: 0;
+        padding: 15px;
+    }
 
     /* INTRO */
 
@@ -1031,21 +1368,24 @@ body::before {
 
     /* SECTIONS */
 
+    /* COMMENTED OUT: conflicts with mock4.css
     .portfolio-section {
         padding: 30px 25px 30px;
     }
+    */
 
+    /* COMMENTED OUT: conflicts with mock4.css
     .portfolio-grid,
     .portfolio-row,
     .portfolio-right {
         gap: 20px;
     }
+    */
 
     .portfolio-row {
         grid-template-columns: 1fr;
     }
 
-    /* All cards same height on mobile */
     .small-card,
     .wide-card,
     .tall-card {
@@ -1125,9 +1465,7 @@ body::before {
         height: 300px;
     }
 
-    /* HORIZONTAL SCROLL
-       On mobile: disable the JS scroll effect,
-       let cards scroll naturally with touch */
+    /* HORIZONTAL SCROLL */
 
     .horizontal-section {
         padding: 30px 0 30px;
@@ -1145,16 +1483,14 @@ body::before {
         overflow-x: auto;
         overflow-y: hidden;
         padding: 10px 25px 30px;
-        /* Smooth momentum scrolling on iOS */
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* hide scrollbar Firefox */
+        scrollbar-width: none;
     }
 
     .horizontal-track-wrapper::-webkit-scrollbar {
-        display: none; /* hide scrollbar Chrome/Safari */
+        display: none;
     }
 
-    /* On mobile the track just lays flat — user swipes it */
     .horizontal-track {
         transform: none !important;
     }
@@ -1187,7 +1523,6 @@ body::before {
         font-size: clamp(22px, 6vw, 36px);
     }
 
-    /* REVEAL — smaller translate prevents horizontal overflow on narrow screens */
     .reveal-left {
         translate: -30px 0;
     }
@@ -1196,7 +1531,7 @@ body::before {
         translate: 30px 0;
     }
 
-     /* FILTER BAR */
+    /* FILTER BAR */
     .filter-bar {
         padding: 20px 25px 30px;
         gap: 8px;
@@ -1207,7 +1542,7 @@ body::before {
         font-size: 10px;
     }
 
-    /* NEW CARD STYLES */
+    /* COMMENTED OUT: conflicts with mock4.css
     .card-img-wrap {
         height: 200px;
     }
@@ -1220,16 +1555,16 @@ body::before {
         font-size: 20px;
     }
 
-    .card-desc {
-        font-size: 13px;
-    }
-
     .card-thumbs img {
         width: 60px;
         height: 44px;
     }
+    */
 
-    /* HERO — fix centering on mobile */
+    .card-desc {
+        font-size: 13px;
+    }
+
     .portfolio-hero-content {
         left: 50%;
         right: auto;
@@ -1238,7 +1573,6 @@ body::before {
         width: 90%;
     }
 
-    /* MODAL NAV BUTTONS */
     .modal-prev { left: 10px; }
     .modal-next { right: 10px; }
 
@@ -1271,7 +1605,6 @@ body::before {
         font-size: clamp(36px, 10vw, 56px);
         margin-bottom: 20px;
     }
-    
 
     .portfolio-hero-stats{
         display: flex;
@@ -1286,7 +1619,6 @@ body::before {
     .portfolio-hero-stats p{
         font-size: 8px;
     }
-    
 
     .h-card {
         width: 240px;
@@ -1297,11 +1629,12 @@ body::before {
         font-size: 22px;
     }
 
-     .filter-btn {
+    .filter-btn {
         padding: 8px 14px;
         font-size: 10px;
     }
 
+    /* COMMENTED OUT: conflicts with mock4.css
     .card-title {
         font-size: 18px;
     }
@@ -1309,5 +1642,6 @@ body::before {
     .card-img-wrap {
         height: 180px;
     }
+    */
 
 }
