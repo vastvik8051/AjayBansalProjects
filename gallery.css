@@ -181,7 +181,7 @@ body {
 ========================================= */
 
 .portfolio-gallery {
-    padding: 40px 60px 200px;
+    padding: 40px 60px 90px;
     background: transparent;
 }
 
@@ -303,7 +303,7 @@ body {
     }
 
     .portfolio-gallery {
-        padding: 30px 30px 180px;
+        padding: 30px 30px 90px;
     }
 }
 
@@ -359,7 +359,7 @@ body {
     }
 
     .portfolio-gallery {
-        padding: 24px 16px 200px;
+        padding: 24px 16px 90px;
     }
 }
 

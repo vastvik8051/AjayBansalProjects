@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <title></title>
+
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -56,8 +57,9 @@
     <meta property="og:url" content="https://ajaybuilders.com/zyz">
     <meta property="og:type" content="website">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./gallery.css">
+    <link rel="stylesheet" href="./category.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -66,13 +68,8 @@
 
 <body>
 
-    <!-- BACKGROUND VIDEO — stays visible behind hero card -->
-    <video class="video-bg" autoplay muted loop playsinline>
-        <source src="./assets/vids/gallery background.mp4" type="video/mp4">
-    </video>
-
     <!-- NAVBAR -->
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="logo">
             <a href="./index.html">
                 <img src="./assets/img/ajaylogo.webp" alt="">
@@ -99,70 +96,76 @@
         </div>
     </header>
 
-    <!-- =========================================
-         HERO SECTION
-         — padded so background video is visible on sides
-         — main image with title, description, thumbnails
-         — change src, title, description, and thumb srcs per project
-    ========================================= -->
-    <section class="project-hero">
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-line">
+        <div class="scroll-progress"></div>
+    </div>
 
-        <!-- the hero card — padded inward so video shows behind -->
-        <div class="project-hero-card">
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="./portfolio.html">PORTFOLIO</a>
+        <span>/</span>
+        <span>RESIDENTIAL</span>
+    </div>
 
-            <!-- main hero image -->
-            <img class="project-hero-img" src="./assets/img/1.webp" alt="Project Hero">
+    <!-- PROJECTS GRID -->
+    <section class="category-section">
 
-            <!-- dark overlay -->
-            <div class="project-hero-overlay"></div>
-
-            <!-- text content — top left -->
-            <div class="project-hero-content">
-                <p class="project-hero-category">RESIDENTIAL • GWALIOR</p>
-                <h1 class="project-hero-title">Luxury Villa</h1>
-                <p class="project-hero-desc">A premium residence featuring contemporary architecture,
-                    timeless materials, and spaces designed for refined living.</p>
-
-                <!-- horizontally scrollable thumbnails -->
-                <div class="thumbs-wrapper">
-                    <button class="thumb-arrow thumb-prev">&#8249;</button>
-
-                    <div class="project-hero-thumbs">
-                        <img src="./assets/img/2.webp" alt="">
-                        <img src="./assets/img/3.webp" alt="">
-                        <img src="./assets/img/4.webp" alt="">
-                        <img src="./assets/img/5.webp" alt="">
-                        <img src="./assets/img/6.webp" alt="">
-                        <img src="./assets/img/7.webp" alt="">
-                    </div>
-
-                    <button class="thumb-arrow thumb-next">&#8250;</button>
-                </div>
-
-                <div class="thumb-dots"></div>
-            </div>
-
+        <div class="category-intro">
+            <h2>Residential Architecture & Luxury Homes.</h2>
+            <p class="category-count">6 PROJECTS</p>
         </div>
 
-    </section>
+        <div class="category-grid">
 
-    <!-- GALLERY -->
-    <section class="portfolio-gallery">
-        <div class="gallery-grid">
-            <img src="./assets/img/unknown/1-1.png" alt="">
-            <img src="./assets/img/unknown/1-2.jpg" alt="">
-            <img src="./assets/img/unknown/2-2.png" alt="">
-            <img src="./assets/img/unknown/23._3 - Photo.jpg" alt="">
-            <img src="./assets/img/unknown/25.jpg" alt="">
-            <img src="./assets/img/unknown/6.jpg" alt="">
-            <img src="./assets/img/unknown/6.png" alt="">
-            <img src="./assets/img/unknown/back-1.png" alt="">
-            <img src="./assets/img/unknown/Bajaj elevation.jpg" alt="">
-            <img src="./assets/img/unknown/IMG_1629.jpeg" alt="">
-            <img src="./assets/img/unknown/KD.jpg" alt="">
-            <img src="./assets/img/unknown/new.jpg" alt="">
-            <img src="./assets/img/unknown/resort 2.jpg" alt="">
-            <img src="./assets/img/unknown/Screenshot 2025-12-01 122526.png" alt="">
+            <!-- PROJECT 1 — change href to the project's page -->
+            <a href="./gallery.html" class="project-item">
+                <img src="./assets/img/2.webp" alt="Luxury Villa">
+                <div class="project-item-overlay">
+                    <h3>Luxury Villa</h3>
+                </div>
+            </a>
+
+            <!-- PROJECT 2 -->
+            <a href="./gallery.html" class="project-item">
+                <img src="./assets/img/7.webp" alt="Elegant Family Home">
+                <div class="project-item-overlay">
+                    <h3>Elegant Family Home</h3>
+                </div>
+            </a>
+
+            <!-- PROJECT 3 -->
+            <a href="./gallery.html" class="project-item">
+                <img src="./assets/img/8.webp" alt="Modern Bungalow">
+                <div class="project-item-overlay">
+                    <h3>Modern Bungalow</h3>
+                </div>
+            </a>
+
+            <!-- PROJECT 4 -->
+            <a href="./gallery.html" class="project-item">
+                <img src="./assets/img/1.webp" alt="Contemporary Residence">
+                <div class="project-item-overlay">
+                    <h3>Contemporary Residence</h3>
+                </div>
+            </a>
+
+            <!-- PROJECT 5 -->
+            <a href="./gallery.html" class="project-item">
+                <img src="./assets/img/4.webp" alt="Premium Apartment">
+                <div class="project-item-overlay">
+                    <h3>Premium Apartment</h3>
+                </div>
+            </a>
+
+            <!-- PROJECT 6 -->
+            <a href="./gallery.html" class="project-item">
+                <img src="./assets/img/6.webp" alt="Heritage Farmhouse">
+                <div class="project-item-overlay">
+                    <h3>Heritage Farmhouse</h3>
+                </div>
+            </a>
+
         </div>
     </section>
 
@@ -184,8 +187,8 @@
         <div class="footer-line"></div>
         <div class="footer-middle">
             <div class="footer-about">
-                <p>Established in 1984, Ajay Builders & Consultant is a multi-disciplinary firm delivering excellence
-                    in Architecture, Engineering, Interior Design, Development, and Valuation across India.</p>
+                <p>Established in 1984, Ajay Builders & Consultant is a multi-disciplinary firm delivering excellence in
+                    Architecture, Engineering, Interior Design, Development, and Valuation across India.</p>
             </div>
             <div class="footer-links">
                 <div class="footer-column">
@@ -198,22 +201,15 @@
                 </div>
                 <div class="footer-column">
                     <h4>Contact Us</h4>
-                    <p><i class="fa-solid fa-location-dot"></i> S 34 & 35 Sanjay Complex, Jayendraganj, Gwalior (MP) -
-                        474009</p>
+                    <p><i class="fa-solid fa-location-dot"></i> S 34 & 35 Sanjay Complex, Jayendraganj, Gwalior (MP) - 474009</p>
                     <a href="tel:0751-4066607"><i class="fa-solid fa-square-phone"></i> 0751-4066607</a>
-                    <a href="mailto:ar.ajaybansal@gmail.com"><i class="fa-solid fa-envelope"></i>
-                        ar.ajaybansal@gmail.com</a>
-                    <a href="mailto:nikunjbansal@nivaventure.com"><i class="fa-solid fa-envelope"></i>
-                        nikunjbansal@nivaventure.com</a>
+                    <a href="mailto:ar.ajaybansal@gmail.com"><i class="fa-solid fa-envelope"></i> ar.ajaybansal@gmail.com</a>
                 </div>
                 <div class="footer-column">
                     <h4>Socials</h4>
-                    <a href="https://www.instagram.com/ajaybuilders?igsh=cTM1N2tieWR1eTZq"><i
-                            class="fa-brands fa-instagram"></i> Instagram</a>
-                    <a href="https://www.facebook.com/share/18SXtJwdca/"><i class="fa-brands fa-facebook"></i>
-                        Facebook</a>
-                    <a href="https://www.linkedin.com/company/ajay-bansal-group/"><i class="fa-brands fa-linkedin"></i>
-                        LinkedIn</a>
+                    <a href="https://www.instagram.com/ajaybuilders?igsh=cTM1N2tieWR1eTZq"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="https://www.facebook.com/share/18SXtJwdca/"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                    <a href="https://www.linkedin.com/company/ajay-bansal-group/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -229,14 +225,10 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
 
-    <script src="nav.js"></script>
-
-    <script>
-        document.querySelector('.video-bg').playbackRate = 0.8;
-    </script>
-
-    <script src="./gallery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="./nav.js"></script>
+    <script src="./category.js"></script>
 
 </body>
-
 </html>
