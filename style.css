@@ -239,7 +239,7 @@ img {
 }
 
 .logo h1 {
-    font-size: 22px;
+    font-size: 30px;
     line-height: 1;
 }
 
@@ -252,6 +252,7 @@ nav {
     display: flex;
     gap: 40px;
     color: #0C0C0C;
+    margin-left: 350px;
 }
 
 nav a {
@@ -643,7 +644,7 @@ nav a:hover::after {
 }
 
 .services-left h2 {
-    font-size: clamp(42px, 5vw, 70px);
+    font-size: clamp(20px, 5vw, 40px);
     line-height: 1.1;
     margin-bottom: 30px;
     color: var(--dark-color);
@@ -817,6 +818,11 @@ nav a:hover::after {
     font-weight: 500;
     font-family: 'Cormorant Garamond', serif;
     padding-top: 50px;
+}
+
+.card-fix{
+    /* transform: translateY(40px); */
+    margin-top: 30px;
 }
 
 .project-overlay {
@@ -1168,6 +1174,11 @@ nav a:hover::after {
     footer {
         padding: 100px 50px;
     }
+
+    /* .card-fix{
+    transform: translateY(40px);
+    padding-bottom: 200px;
+} */
 
     /* FOOTER */
     .footer-middle {
