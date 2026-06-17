@@ -49,9 +49,9 @@
 
     grid-template-columns:1fr 1fr;
 
-    gap:30px;
+    /* gap:30px; */
 
-    row-gap:50px;
+    /* row-gap:50px; */
 }
 
 
@@ -59,7 +59,7 @@
 
 .service-box{
 
-    height:550px;
+    height:auto;
 
     overflow:hidden;
 
@@ -77,9 +77,11 @@
 
     height:100%;
 
-    object-fit:cover;
+    object-fit:contain;
 
     transition:0.8s ease;
+
+    border-radius: 40px;
 }
 
 .service-image-box:hover img{
@@ -210,7 +212,7 @@
 
     height:550px;
 
-    object-fit:cover;
+    object-fit:contain;
 }
 
 
@@ -345,7 +347,7 @@
 
         padding:25px;
 
-        gap:25px;
+        /* gap:25px; */
     }
 
     .service-box{

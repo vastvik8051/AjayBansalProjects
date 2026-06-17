@@ -410,7 +410,7 @@ nav a:hover::after {
 }
 
 .hero-content h1 {
-    font-size: clamp(48px, 8vw, 95px);
+    font-size: clamp(20px, 8vw, 35px);
     line-height: 0.95;
     margin-bottom: 35px;
     color: var(--light-color);
@@ -419,11 +419,11 @@ nav a:hover::after {
 
 .hero-content span {
     color: var(--primary-color);
-    font-size: 75px;
+    font-size: 45px;
 }
 
 .hero-text {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.8;
     margin-bottom: 40px;
     color: rgba(255, 255, 255, 0.82);
@@ -677,6 +677,10 @@ nav a:hover::after {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.services-right a{
+    text-decoration: none;
 }
 
 .service-card {
@@ -1310,6 +1314,7 @@ nav a:hover::after {
     }
 
     .about-left{
+        display: none;
         height: auto;
     }
 
@@ -1321,6 +1326,8 @@ nav a:hover::after {
     .services-section {
         padding: 40px 25px;
     }
+
+    
 
     .services-right {
         display: grid;
@@ -1438,32 +1445,60 @@ nav a:hover::after {
         display: flex;
     }
 
+    /* hero changes */
+    .hero{
+        height: 430px;
+    }
+
+    .swiper-slide img{
+        object-fit: cover;
+        /* position: fixed; */
+    }
+
+    .hero-content span{
+        font-size: 20px;
+    }
+
+    .hero-text {
+        line-height: 1.6;
+        margin-bottom: 10px;
+
+        font-size: 12px;
+    }
+
+    .hero-content{
+        width: 100%;
+    }
+   /* end  */
+
     /* HERO */
     .hero-content h1 {
         line-height: 1.1;
         margin-bottom: 20px;
     }
 
-    .hero-text {
-        line-height: 1.6;
-        margin-bottom: 10px;
-    }
+    
 
     .hero-buttons .solid-btn {
         width: 140px;
     }
 
     .swiper-button-prev {
-        bottom: 250px !important;
+        bottom: 30px !important;
+        right: 90px !important;
     }
 
     .swiper-button-next {
-        bottom: 210px !important;
+        bottom: 30px !important;
     }
 
     /* SERVICES */
     .services-section {
         gap: 25px;
+    }
+
+    .services-left{
+        display: none;
     }
 
     .services-text{
@@ -1488,6 +1523,10 @@ nav a:hover::after {
 
     .service-content p {
         display: none;
+    }
+
+    .service-arrow{
+        background: var(--beige-color);
     }
 
     /* ABOUT */
