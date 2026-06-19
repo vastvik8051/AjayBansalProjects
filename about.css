@@ -425,81 +425,64 @@ h4 {
    CLIENTS SECTION
 ========================================= */
 
-.clients-section {
-    padding: 40px 80px;
-    background: #F5F1EA;
+.clients-top{
     text-align: center;
 }
 
-/* TOP */
-.clients-top {
-    margin-bottom: 30px;
+.clients-strip {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
 }
 
-.clients-top h2 {
-    font-size: clamp(45px, 6vw, 80px);
-    line-height: 1.05;
-    font-weight: 400;
-}
-
-/* GRID */
-.clients-grid {
+.clients-track {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 18px;
-    max-width: 1200px;
-    margin: auto;
+    width: max-content;
+    animation: clientScroll 40s linear infinite;
+    padding-bottom: 30px;
 }
 
-/* BOX */
+@keyframes clientScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 .client-box {
+    flex: 0 0 320px;
     padding: 22px 34px;
     background: #fff;
     border: 1px solid rgba(0,0,0,0.06);
-    color: #1d3557;
-    font-size: 15px;
-    letter-spacing: 2px;
-    transition: 0.4s ease;
-    cursor: default;
     border-radius: 40px;
-    width: auto; /* let content decide width */
-    flex: 1 1 300px; /* grow, shrink, min width 300px */
-    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 14px;
 }
 
-.client-box img {
-    width: auto;
-    height: 50px;
-    object-fit: contain;
-    margin: 0 auto;
+.client-box h2{
+    text-align: center;
+    font-weight: 400;
+    font-size: medium;
 }
 
-/* BANK IMAGES */
+
+.client-box img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
 .bank-img {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    width: 100%;
-}
-
-.bank-img img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* HOVER */
-.client-box:hover {
-    transform: translateY(-5px);
-    background: var(--beige-color);
-    color: #0D0D0D;
-    border-color: #111;
 }
 
 /* RESPONSIVE */
