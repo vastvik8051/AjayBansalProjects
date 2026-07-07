@@ -1323,12 +1323,12 @@ nav a:hover::after {
     }
 
     .swiper-button-prev::after {
-        content: '⋘' !important;
+        content: '⮜' !important;
         font-size: 45px !important;
     }
 
     .swiper-button-next::after {
-        content: '⋙' !important;
+        content: '⮞' !important;
         font-size: 45px !important;
     }
 
