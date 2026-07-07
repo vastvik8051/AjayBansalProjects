@@ -201,8 +201,8 @@ img {
     justify-content: space-between;
     align-items: center;
     z-index: 1001;
-    /* background: #fff; */
-    background: transparent;
+    background: bisque;
+    /* background: transparent; */
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(18px);
@@ -364,7 +364,7 @@ nav a:hover::after {
     height: 100vh;
 
     /* new setting might remove later */
-    margin-top: 75px;
+    margin-top: 66px;
 }
 
 .heroSwiper {
