@@ -362,6 +362,9 @@ nav a:hover::after {
 
 .hero {
     height: 100vh;
+
+    /* new setting might remove later */
+    margin-top: 75px;
 }
 
 .heroSwiper {
